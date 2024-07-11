@@ -28,14 +28,183 @@ applyMapping(data: JSON!, mappingId: ID): JSON!
 ```
 
 ### applyMappingWithDefinition
-Applies a provided mapping definition to the given data.
+Certainly! I'll update the documentation to reflect this target structure while keeping the JSON examples brief. Here's the revised documentation:
+
+# Product Schema Mapping with GraphQL
+
+This e-commerce product extraction API allows you to apply custom mappings to your product data and generate new mappings based on sample data and target schemas.
+
+## applyMappingWithDefinition Query
+
+This query applies a custom mapping to transform product data into a desired format. It allows you to transform product data between different schemas, facilitating integration of data from various sources or preparation for different target systems.
+
+
+```graphql
+query {
+  applyMappingWithDefinition(
+    data: {
+      "title": "Luxurious Beach Towel - Large",
+      "vendor": "SunnyDay",
+      "product_type": "beach towel",
+      "variants": [{"price": "29.99", "compare_at_price": "39.99"}],
+      "tags": ["summer", "beach"],
+      "body_html": "<p>High-quality beach towel</p>"
+    },
+    mapping: [
+      {
+        "transform": "trim",
+        "sourceField": "title",
+        "targetField": "name"
+      },
+      {
+        "transform": "trim",
+        "sourceField": "vendor",
+        "targetField": "brand"
+      },
+      {
+        "choices": {
+          "Garden & DIY: Garden Items": ["beach towel"]
+        },
+        "sourceField": "product_type",
+        "targetField": "category"
+      },
+      {
+        "transform": "toNumber",
+        "sourceField": "variants[0].price",
+        "targetField": "typical_price"
+      },
+      {
+        "transform": "trim",
+        "sourceField": "body_html",
+        "targetField": "description"
+      }
+    ]
+  )
+}
+```
+
+### Sample Response
+
+```json
+{
+  "data": {
+    "applyMappingWithDefinition": {
+      "name": "Luxurious Beach Towel",
+      "brand": "SunnyDay",
+      "category": "Garden & DIY: Garden Items",
+      "typical_price": 29.99,
+      "description": "High-quality beach towel"
+    }
+  }
+}
+```
 
 ```graphql
 applyMappingWithDefinition(data: JSON!, mapping: JSON!): JSON!
 ```
 
 ### generateMapping
-Generates a mapping based on sample data and a target format.
+This query generates a mapping based on sample data and a desired target schema.
+
+```graphql
+query {
+  generateMapping(
+    sampleData: [
+      {
+        "title": "Comfortable Patio Chair - Wicker",
+        "vendor": "OutdoorLiving",
+        "product_type": "patio furniture",
+        "variants": [{"price": "59.99", "compare_at_price": "69.99"}],
+        "body_html": "<p>Durable and stylish patio chair</p>",
+        "rating": 4.5,
+        "review_count": 120
+      }
+    ],
+    targetFormat: {
+      "name": {
+        "type": "string",
+        "description": "Full product name / title. Remove all references to size and variant."
+      },
+      "brand": {
+        "type": "string",
+        "description": "The brand of the product, use the retailer as fallback."
+      },
+      "rating": {
+        "type": "number",
+        "description": "Average rating of the product"
+      },
+      "reviews": {
+        "type": "number",
+        "description": "Number of reviews for the product"
+      },
+      "category": {
+        "type": "choice",
+        "choices": [
+          "Garden & DIY: Garden Furniture",
+          "Living & Furnishing: Living Room"
+        ],
+        "description": "Product category"
+      },
+      "typical_price": {
+        "type": "number",
+        "description": "Typical/Popular price for the product"
+      },
+      "description": {
+        "type": "string",
+        "description": "Description of the product"
+      }
+    }
+  )
+}
+```
+
+### Sample Response
+
+```json
+{
+  "data": {
+    "generateMapping": [
+      {
+        "transform": "trim",
+        "sourceField": "title",
+        "targetField": "name"
+      },
+      {
+        "transform": "trim",
+        "sourceField": "vendor",
+        "targetField": "brand"
+      },
+      {
+        "transform": "toNumber",
+        "sourceField": "rating",
+        "targetField": "rating"
+      },
+      {
+        "transform": "toNumber",
+        "sourceField": "review_count",
+        "targetField": "reviews"
+      },
+      {
+        "choices": {
+          "Garden & DIY: Garden Furniture": ["patio furniture"]
+        },
+        "sourceField": "product_type",
+        "targetField": "category"
+      },
+      {
+        "transform": "toNumber",
+        "sourceField": "variants[0].price",
+        "targetField": "typical_price"
+      },
+      {
+        "transform": "trim",
+        "sourceField": "body_html",
+        "targetField": "description"
+      }
+    ]
+  }
+}
+```
 
 ```graphql
 generateMapping(sampleData: [JSON!]!, targetFormat: JSON!): JSON!

@@ -2,19 +2,102 @@
 title: 'GraphQL: Extraction'
 ---
 
-This part of the index GraphQL API allows for structured product information extraction from various sources.
+With the index GraphQL API, you can search for products using various query types and apply filters and transformations using target schemas.
 
 ## Queries
 
 ### getProduct
-Retrieves a product based on the provided query.
+This query allows you to search for a single product based on a link, text, GTIN, or image link.
+
+```graphql
+query {
+  getProduct(
+    query: "B08F7N4LF8",
+    targetSchema: {
+      name: String,
+      price: Float,
+      description: String,
+      brand: String
+    },
+    type: GTIN
+  )
+}
+```
+
+### Sample Response
+
+```json
+{
+  "data": {
+    "getProduct": {
+      "name": "Apple AirPods Pro",
+      "price": 249.99,
+      "description": "Active Noise Cancelling, Transparency mode, Spatial Audio",
+      "brand": "Apple"
+    }
+  }
+}
+```
+
+The `targetSchema` parameter allows you to specify the structure of the returned data, similar to how you might use `query_by` or `filter_by` in a REST API. The `source` parameter in `getAllProducts` defines where to fetch the products from, which is analogous to specifying the endpoint in a REST API.
 
 ```graphql
 getProduct(query: ID!, targetSchema: JSON!, type: QueryType): JSON
 ```
 
 ### getAllProducts
-Retrieves all products from a specified source.
+This query allows you to fetch multiple products from a specific source, applying a target schema to the results.
+
+```graphql
+query {
+  getAllProducts(
+    source: {
+      type: ProductLink,
+      sourceURL: "https://example-store.com/products",
+      sourceMethod: "GET"
+    },
+    targetSchema: {
+      id: ID,
+      name: String,
+      price: Float,
+      category: String,
+      inStock: Boolean
+    }
+  )
+}
+```
+
+### Sample Response
+
+```json
+{
+  "data": {
+    "getAllProducts": [
+      {
+        "id": "1",
+        "name": "Wireless Bluetooth Headphones",
+        "price": 79.99,
+        "category": "Electronics",
+        "inStock": true
+      },
+      {
+        "id": "2",
+        "name": "Smart Home Security Camera",
+        "price": 129.99,
+        "category": "Home & Garden",
+        "inStock": false
+      },
+      {
+        "id": "3",
+        "name": "Organic Cotton T-Shirt",
+        "price": 24.99,
+        "category": "Apparel",
+        "inStock": true
+      }
+    ]
+  }
+}
+```
 
 ```graphql
 getAllProducts(source: SourceRequest!, targetSchema: JSON!): [JSON!]
