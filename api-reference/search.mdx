@@ -1,12 +1,11 @@
 ---
 title: 'Search'
-openapi: 'GET /collections/companies/documents/search'
 ---
 
 In Index Commerce, a search consists of a query against one or more text fields and a list of filters against numerical or facet fields. You can also sort and facet your results.
 
 ```shell
-curl -H "X-INDEXCOMMERCE-API-KEY: ${INDEXCOMMERCE_API_KEY}" \
+curl -H "Authorization: Bearer ${INDEXCOMMERCE_API_KEY}" \
 "https://data.index-commerce.com/collections/companies/documents/search\
 ?q=stark&query_by=company_name&filter_by=num_employees:>100\
 &sort_by=num_employees:desc"
@@ -445,14 +444,14 @@ Let's create a preset with name listing_view.
 ```shell
 curl "https://data.index-commerce.com/presets/listing_view" -X PUT \
 -H "Content-Type: application/json" \
--H "X-INDEXCOMMERCE-API-KEY: ${INDEXCOMMERCE_API_KEY}" \
+-H "Authorization: Bearer ${INDEXCOMMERCE_API_KEY}" \
 -d '{"value": {"searches":[{"collection":"products","q":"*", "sort_by": "popularity"}]}}'
 ```
 
 You can refer to this preset configuration during a search operation.
 
 ```shell
-curl -H "X-INDEXCOMMERCE-API-KEY: ${INDEXCOMMERCE_API_KEY}"  -X POST \
+curl -H "Authorization: Bearer ${INDEXCOMMERCE_API_KEY}"  -X POST \
 'https://data.index-commerce.com/multi_search?preset=listing_view'
 ```
 
@@ -463,7 +462,7 @@ The only requirement is that for GET .../search, the stored preset value should 
 ```shell
 curl "https://data.index-commerce.com/presets/listing_view" -X PUT \
 -H "Content-Type: application/json" \
--H "X-INDEXCOMMERCE-API-KEY: ${INDEXCOMMERCE_API_KEY}" -d '
+-H "Authorization: Bearer ${INDEXCOMMERCE_API_KEY}" -d '
 {"value": {"collection":"products","q":"*", "sort_by": "popularity"}}'
 ```
 
