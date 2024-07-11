@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Documentation",
   "logo": {
-    "dark": "https://bauhaus.index-commerce.com/logo.png",
-    "light": "https://bauhaus.index-commerce.com/logo.png"
+    "dark": "logo/logo.png",
+    "light": "logo/logo.png"
   },
   "favicon": "/favicon.svg",
   "colors": {
@@ -25,12 +25,6 @@
     "name": "Control Panel",
     "url": "https://dashboard.index-commerce.com"
   },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
   "anchors": [
     {
       "name": "Documentation",
@@ -40,41 +34,22 @@
     {
       "name": "Blog",
       "icon": "newspaper",
-      "url": "https://index-commerce.com/blog"
+      "url": "https://index-commerce.com/tutorials"
     }
   ],
   "navigation": [
     {
       "group": "Get Started",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
-      ]
-    },
-    {
-      "group": "Essentials",
-      "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "introduction"
       ]
     },
     {
       "group": "API Documentation",
       "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/extract",
+        "api-reference/map",
+        "api-reference/search"
       ]
     }
   ],
