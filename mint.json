@@ -27,11 +27,6 @@
   },
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://docs.index-commerce.com/"
-    },
-    {
       "name": "Blog",
       "icon": "newspaper",
       "url": "https://index-commerce.com/tutorials"
