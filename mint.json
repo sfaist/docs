@@ -34,14 +34,9 @@
   ],
   "navigation": [
     {
-      "group": "Get Started",
-      "pages": [
-        "introduction"
-      ]
-    },
-    {
       "group": "API Documentation",
       "pages": [
+        "introduction",
         "api-reference/extract",
         "api-reference/map",
         "api-reference/search"
