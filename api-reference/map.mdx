@@ -1,0 +1,149 @@
+---
+title: 'GraphQL: Sources, Mappings, TargetSchemas'
+---
+
+This part of the index GraphQL API allows for structured product mappings from sources to specified target schemas.
+
+## Queries
+
+### getSources
+Retrieves all registered sources.
+
+```graphql
+getSources(): [SourceSchema!]
+```
+
+### getMappings
+Retrieves all saved mappings.
+
+```graphql
+getMappings(): [MappingSchema!]
+```
+
+### applyMapping
+Applies a saved mapping to the provided data.
+
+```graphql
+applyMapping(data: JSON!, mappingId: ID): JSON!
+```
+
+### applyMappingWithDefinition
+Applies a provided mapping definition to the given data.
+
+```graphql
+applyMappingWithDefinition(data: JSON!, mapping: JSON!): JSON!
+```
+
+### generateMapping
+Generates a mapping based on sample data and a target format.
+
+```graphql
+generateMapping(sampleData: [JSON!]!, targetFormat: JSON!): JSON!
+```
+
+### getTargetSchemas
+Retrieves all saved target schemas.
+
+```graphql
+getTargetSchemas(): [TargetSchema!]
+```
+
+## Mutations
+
+### addSource
+Adds a new source to the system.
+
+```graphql
+addSource(source: SourceRequest!, targetSchema: JSON!): ID!
+```
+
+### deleteSource
+Deletes a source from the system.
+
+```graphql
+deleteSource(id: ID!): Boolean!
+```
+
+### saveMapping
+Saves a new mapping.
+
+```graphql
+saveMapping(mapping: JSON!): ID!
+```
+
+### deleteMapping
+Deletes a saved mapping.
+
+```graphql
+deleteMapping(id: ID!): Boolean!
+```
+
+### saveTargetSchema
+Saves a new target schema.
+
+```graphql
+saveTargetSchema(targetSchema: JSON!): ID!
+```
+
+### deleteTargetSchema
+Deletes a saved target schema.
+
+```graphql
+deleteTargetSchema(id: ID!): Boolean!
+```
+
+
+### Enums
+
+#### SourceType
+- `ProductLink`
+- `Feed`
+- `Shopify`
+- `Algolia`
+- `Custom`
+
+### Input Types
+
+#### SourceRequest
+```graphql
+input SourceRequest {
+  type: SourceType!
+  sourceURL: String!
+  sourceHeaders: []    
+  sourceBody: String
+  sourceMethod: String
+}
+```
+
+### Types
+
+#### SourceSchema
+```graphql
+type SourceSchema {
+  type: SourceType!
+  sourceURL: String!
+  sourceHeaders: []    
+  sourceBody: String
+  sourceMethod: String
+}
+```
+
+#### MappingSchema
+```graphql
+type MappingSchema {
+  id: ID!
+  mapping: JSON!
+}
+```
+
+#### TargetSchema
+```graphql
+type TargetSchema {
+  id: ID!
+  targetSchema: JSON!
+}
+```
+
+### Scalars
+
+- `JSON`: Represents a JSON object

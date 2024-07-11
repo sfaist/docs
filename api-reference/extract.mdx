@@ -1,0 +1,45 @@
+---
+title: 'GraphQL: Extraction'
+---
+
+This part of the index GraphQL API allows for structured product information extraction from various sources.
+
+## Queries
+
+### getProduct
+Retrieves a product based on the provided query.
+
+```graphql
+getProduct(query: ID!, targetSchema: JSON!, type: QueryType): JSON
+```
+
+### getAllProducts
+Retrieves all products from a specified source.
+
+```graphql
+getAllProducts(source: SourceRequest!, targetSchema: JSON!): [JSON!]
+```
+### Enums
+
+#### QueryType
+- `Link`
+- `Text`
+- `GTIN`
+- `ImageLink`
+
+### Input Types
+
+#### SourceRequest
+```graphql
+input SourceRequest {
+  type: SourceType!
+  sourceURL: String!
+  sourceHeaders: []    
+  sourceBody: String
+  sourceMethod: String
+}
+```
+
+### Scalars
+
+- `JSON`: Represents a JSON object
