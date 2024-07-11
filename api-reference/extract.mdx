@@ -14,10 +14,20 @@ query {
   getProduct(
     query: "B08F7N4LF8",
     targetSchema: {
-      name: String,
-      price: Float,
-      description: String,
-      brand: String
+      "name": {
+        "type": "string",
+        "description": "The title of the product"
+      },
+      "price": {
+        "type": "number"
+      },
+      "description": {
+        "type": "string"
+      },
+      "brand": {
+        "type": "number",
+        "description": "Brand / Manufacturer of the product"
+      },
     },
     type: GTIN
   )
@@ -52,16 +62,34 @@ This query allows you to fetch multiple products from a specific source, applyin
 query {
   getAllProducts(
     source: {
-      type: ProductLink,
-      sourceURL: "https://example-store.com/products",
-      sourceMethod: "GET"
+      type: Shopify,
+      sourceURL: "https://mrbeast.store/",
     },
     targetSchema: {
-      id: ID,
-      name: String,
-      price: Float,
-      category: String,
-      inStock: Boolean
+      "id": {
+        "type": "string",
+      },
+      "name": {
+        "type": "string",
+        "description": "The title of the product"
+      },
+      "price": {
+        "type": "number",
+        "description": "Product list price"
+      },
+      "category": {
+        "type": "string",
+        "choices": [
+          "Electronics",
+          "Home & Garden"
+          "Apparel"
+        ],
+        "description": "Product category"
+      },
+      "inStock": {
+        "type": "boolean",
+        "description": "If any variant of the product is available"
+      },
     }
   )
 }
