@@ -19,18 +19,18 @@ Really it comes down to this: The more you use index, the more value you get, an
 
 ## SKU Processing Rates (After Free Tier)
 
-| Source | Price per 1,000 SKUs |
+| Source | Price per 1,000 SKUs per month |
 |--------|----------------------|
-| Feeds  | $0.50                |
-| Other  | $1.00                |
+| Feeds & Files  | $0.30        |
+| Other    | $0.60              |
 
 ### Feed Sources
 
-Process SKUs from feed and file sources at our most affordable rate:**$0.50 per 1,000 SKUs per month**
+Process SKUs from feed and file sources at our most affordable rate:**$0.30 per 1,000 SKUs per month**
 
 ### Other Sources
 
-For SKUs from other sources such as Shopify, APIs, and other sources: **$1.00 per 1,000 SKUs per month**
+For SKUs from other sources such as Shopify, APIs, and other sources: **$0.60 per 1,000 SKUs per month**
 
 ## How It Works
 
@@ -47,9 +47,9 @@ Let's say you have a catalog with 100,000 SKUs.
 
 Your bill would be:
 * Free tier: First 2,000 SKUs
-* Feeds: (99,000 / 1,000) * \$0.50 \= \$49.50
-* Other: (49,000 / 1,000) * \$1.00 \= \$49
-* Total: \$99.50
+* Feeds: (99,000 / 1,000) * \$0.30 \= \$29.70
+* Other: (49,000 / 1,000) * \$0.60 \= \$29.40 
+* Total: \$59.10
 
 For reference, most major retailers have a catalog with 1,000 to 10,000 SKUs.
 
