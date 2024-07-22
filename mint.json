@@ -25,6 +25,8 @@
     "name": "Control Panel",
     "url": "https://dashboard.index-commerce.com/"
   },
+  "anchors": [
+  ],
   "navigation": [
     {
       "group": "Handbook",
