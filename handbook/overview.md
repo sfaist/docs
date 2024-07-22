@@ -1,12 +1,10 @@
 ---
-title: Overview
+title: How we work with customers
 sidebar: Handbook
 showTitle: true
 ---
 
-Our primary focus is on making our customers successful, not forcing sales through. 
-
-While this means working with a smaller number of users than typical B2B SaaS companies, we know that the people we talk to are mostly already pre-qualified and genuinely interested in potentially using index. 
+Our primary focus is on making our customers successful with our product, making sure they are happy with index and its performance.
 
 The Sales team act as genuine partners with our users. We should feel as motivated to help and delight users as if we were on their team. In practical terms, this means:
 
@@ -25,7 +23,7 @@ The Sales team act as genuine partners with our users. We should feel as motivat
 
 ### Things we want to be great at
 
-- **Genuinely helpful:** We deliver genuinely useful insights about things our customers care about in the sales process.
+- **Genuinely helpful:** We deliver genuinely useful insights about things our customers care about in the sales process and beyond.
 
 - **Speed:** We want to be highly reactive, low process, and reliant on other teams as little as possible to ship things. We want to get stuff wrong quickly, then iterate. 
 
