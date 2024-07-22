@@ -18,9 +18,9 @@ If a customer wants to pay by ACH or bank transfer, we will usually only conside
 
 ## Annual plans and more
 
-For customers who want to sign up for an annual (or longer) plan there is some additional paperwork needed to capture their contractual commitment to a minimum term, and likely custom pricing as well. At a minimum, they should sign an Order Form which references our standard [terms](/terms) and [privacy notice](/privacy).  In addition, they may want a custom Master Services Agreement (MSA) or Data Processing Agreement (DPA).
+For customers who want to sign up for an annual (or longer) plan there is some additional paperwork needed to capture their contractual commitment to a minimum term, and custom pricing as well. At a minimum, they should sign an Order Form which references our standard [terms](terms) and [privacy notice](privacy).  In addition, they may want a custom Master Services Agreement (MSA) or Data Processing Agreement (DPA).
 
-> If a customer wants to vary either our DPA, BAA or MSA terms it is a substantial effort for our legal counsel to review these changes.  At a minimum we should only do this for contracts above $20k a year, and even higher if they are asking for big changes (e.g. adding Service Level Agreements).
+> If a customer wants to vary either our DPA, BAA or MSA terms it is a substantial effort for our legal counsel to review these changes.  At a minimum we only do this for contracts above $20k a year, particularly if they are asking for big changes (e.g. adding Service Level Agreements).
 
 ### Discounts
 

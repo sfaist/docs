@@ -6,9 +6,15 @@ showTitle: true
 
 Our pricing is simple and transparent, based on the number of SKUs in your catalog on average each month. We offer a generous free tier to help you get started.
 
+It can be daunting to figure out how much a usage-based platform like index will cost, but there are simple ways to estimate your usage and costs.
+
+## Why do we price based on usage?
+
+Really it comes down to this: The more you use index, the more value you get, and the more it costs us to process and store your data. Thus, we charge based on usage.
+
 ## Free Tier
 
-* **First 2,000 SKUs per month: FREE**
+* First 2,000 SKUs per month: FREE**
 * Includes both feed and other sources
 
 ## SKU Processing Rates (After Free Tier)
@@ -20,13 +26,11 @@ Our pricing is simple and transparent, based on the number of SKUs in your catal
 
 ### Feed Sources
 
-Process SKUs from feed and file sources at our most affordable rate:
-* **$0.50 per 1,000 SKUs per month**
+Process SKUs from feed and file sources at our most affordable rate:**$0.50 per 1,000 SKUs per month**
 
 ### Other Sources
 
-For SKUs from other sources such as Shopify, APIs, and other sources:
-* **$1.00 per 1,000 SKUs per month**
+For SKUs from other sources such as Shopify, APIs, and other sources: **$1.00 per 1,000 SKUs per month**
 
 ## How It Works
 
@@ -35,9 +39,9 @@ For SKUs from other sources such as Shopify, APIs, and other sources:
 3. SKUs are categorized by source (feeds or other).
 4. Your monthly bill is calculated based on the volume in each category, after the free tier.
 
-## Example
+## How to estimate your usage
 
-If in one month you process:
+Let's say you have a catalog with 100,000 SKUs.
 * 100,000 SKUs from feeds
 * 50,000 SKUs from other sources
 
@@ -47,8 +51,11 @@ Your bill would be:
 * Other: (49,000 / 1,000) * $1.00 = $49
 * Total: $99.50
 
+For reference, most major retailers have a catalog with 1,000 to 10,000 SKUs.
+
 ## Enterprise
-We offer yearly plans and support agreements for enterprise customers. You can find more details on the [contracts](./contracts) page.
+
+We offer yearly plans and support agreements for enterprise customers. You can find more details on the [Contracts](./contracts) page.
 
 ## Benefits
 
@@ -57,8 +64,6 @@ We offer yearly plans and support agreements for enterprise customers. You can f
 * Pay only for what you use beyond the free tier
 * Scales with your business
 * Transparent and predictable pricing
-
-Ready to get started? Contact our sales team for more information or to set up your account.
 
 ## Managing billing
 

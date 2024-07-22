@@ -5,7 +5,7 @@
     "dark": "logo/inverted.png",
     "light": "logo/logo.png"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/logo/favicon.ico",
   "colors": {
     "primary": "#000000",
     "light": "#000000",
@@ -23,15 +23,8 @@
   ],
   "topbarCtaButton": {
     "name": "Control Panel",
-    "url": "https://dashboard.index-commerce.com"
+    "url": "https://dashboard.index-commerce.com/"
   },
-  "anchors": [
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://index-commerce.com/posts"
-    }
-  ],
   "navigation": [
     {
       "group": "Handbook",
@@ -42,7 +35,8 @@
         "handbook/contracts",
         "handbook/refunds",
         "handbook/who-we-do-business-with",
-        "handbook/terms"
+        "handbook/terms",
+        "handbook/privacy"
       ]
     },
     {
