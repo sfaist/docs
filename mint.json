@@ -35,8 +35,8 @@
         "api-reference/extract",
         "api-reference/transform",
         "api-reference/jobs",
-        "api-reference/search",
-        "api-reference/types"
+        "api-reference/types",
+        "api-reference/search"
       ]
     },
     {

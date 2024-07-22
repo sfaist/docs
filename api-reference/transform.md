@@ -1,5 +1,3 @@
-Certainly! Here's a more elaborate version with examples:
-
 ---
 title: 'GraphQL: Transformations and Data Management'
 ---
