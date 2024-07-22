@@ -18,7 +18,7 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:stefan@index-commerce.com"
+      "url": "mailto:support@index-commerce.com"
     }
   ],
   "topbarCtaButton": {
@@ -28,6 +28,17 @@
   "anchors": [
   ],
   "navigation": [
+    {
+      "group": "API Documentation",
+      "pages": [
+        "introduction",
+        "api-reference/extract",
+        "api-reference/transform",
+        "api-reference/jobs",
+        "api-reference/search",
+        "api-reference/types"
+      ]
+    },
     {
       "group": "Handbook",
       "pages": [
@@ -39,17 +50,6 @@
         "handbook/who-we-do-business-with",
         "handbook/terms",
         "handbook/privacy"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "introduction",
-        "api-reference/extract",
-        "api-reference/transform",
-        "api-reference/jobs",
-        "api-reference/search",
-        "api-reference/types"
       ]
     }
   ],
