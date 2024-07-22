@@ -29,17 +29,31 @@
     {
       "name": "Blog",
       "icon": "newspaper",
-      "url": "https://index-commerce.com/tutorials"
+      "url": "https://index-commerce.com/posts"
     }
   ],
   "navigation": [
+    {
+      "group": "Handbook",
+      "pages": [
+        "handbook/overview",
+        "handbook/pricing",
+        "handbook/customer-onboarding",
+        "handbook/contracts",
+        "handbook/refunds",
+        "handbook/who-we-do-business-with",
+        "handbook/terms"
+      ]
+    },
     {
       "group": "API Documentation",
       "pages": [
         "introduction",
         "api-reference/extract",
-        "api-reference/map",
-        "api-reference/search"
+        "api-reference/transform",
+        "api-reference/jobs",
+        "api-reference/search",
+        "api-reference/types"
       ]
     }
   ],
