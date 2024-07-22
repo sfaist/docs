@@ -21,7 +21,7 @@ Really it comes down to this: The more you use index, the more value you get, an
 
 | Source | Price per 1,000 SKUs per month |
 |--------|----------------------|
-| Feeds & Files  | $0.30        |
+| Feeds \& Files  | $0.30        |
 | Other    | $0.60              |
 
 ### Feed Sources
