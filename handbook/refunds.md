@@ -5,8 +5,8 @@ showTitle: true
 ---
 
 Requests we receive fall under the following scenarios:
-- Learning curve: just got off of the startup plan/new client accidentally used us a lot
-- Not satisifed: The customer is unhappy with index, does not want to use it anymore, and is looking for a refund
+- Learning curve: configured many stores with lots of SKUs and without filters, was unaware of the pricing implications.
+- Not satisifed: The customer is unhappy with index, does not want to use it anymore, and is looking for a refund.
 
 ## Eligibility Criteria
 Customer must meet the following criteria to get a refund:
