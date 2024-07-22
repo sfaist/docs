@@ -32,5 +32,3 @@ If a customer has an annual plan but doesn't _pay_ the whole year up front, we w
 
 An Order Form is a lightweight document that captures the customer details, credit amount, discount, term, and signatures from both 
 index and the Customer.  They are either governed by our standard terms or a custom MSA (see below).
-
-You will likely need to use the [Pricing Calculator](https://docs.google.com/spreadsheets/d/1QsDV2ECtMwM9IfC_D7Embmpu7K7q6qbq60t8ARglQaI/edit#gid=358353731) to get the correct credit amount to be included in the order form.
