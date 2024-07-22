@@ -47,9 +47,9 @@ Let's say you have a catalog with 100,000 SKUs.
 
 Your bill would be:
 * Free tier: First 2,000 SKUs
-* Feeds: (99,000 / 1,000) * $0.50 = $49.50
-* Other: (49,000 / 1,000) * $1.00 = $49
-* Total: $99.50
+* Feeds: (99,000 / 1,000) * \$0.50 \= \$49.50
+* Other: (49,000 / 1,000) * \$1.00 \= \$49
+* Total: \$99.50
 
 For reference, most major retailers have a catalog with 1,000 to 10,000 SKUs.
 
