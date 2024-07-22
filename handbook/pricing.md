@@ -14,7 +14,7 @@ Really it comes down to this: The more you use index, the more value you get, an
 
 ## Free Tier
 
-* First 2,000 SKUs per month: FREE**
+* First 2,000 SKUs per month: free
 * Includes both feed and other sources
 
 ## SKU Processing Rates (After Free Tier)
@@ -46,7 +46,7 @@ Let's say you have a catalog with 100,000 SKUs.
 * 50,000 SKUs from other sources
 
 Your bill would be:
-* Free tier: First 2,000 SKUs (FREE)
+* Free tier: First 2,000 SKUs
 * Feeds: (99,000 / 1,000) * $0.50 = $49.50
 * Other: (49,000 / 1,000) * $1.00 = $49
 * Total: $99.50
