@@ -1,5 +1,5 @@
 ---
-title: 'GraphQL: API Types Reference'
+title: 'API Types Reference'
 ---
 
 This section details the various types used throughout the API, providing insight into the structure of the data you'll be working with.

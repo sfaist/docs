@@ -1,5 +1,5 @@
 ---
-title: 'GraphQL: Job Management'
+title: 'Job Management'
 ---
 
 This section of the API focuses on managing and executing jobs. Jobs are a way to combine a source, a mapping, and a target format into a reusable workflow for data transformation.

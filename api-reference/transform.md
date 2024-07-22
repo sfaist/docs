@@ -1,5 +1,5 @@
 ---
-title: 'GraphQL: Transformations and Data Management'
+title: 'Transformations and Data Management'
 ---
 
 This API provides comprehensive functionality for managing product data, including data transformation, source management, and format control. It allows you to create, apply, and manage mappings, sources, and target formats for flexible data processing.

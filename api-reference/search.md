@@ -1,5 +1,5 @@
 ---
-title: 'REST: Search'
+title: 'Search'
 ---
 
 In Index Commerce, a search consists of a query against one or more text fields and a list of filters against numerical or facet fields. You can also sort and facet your results.
