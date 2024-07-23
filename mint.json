@@ -9,14 +9,14 @@
   "colors": {
     "primary": "#000000",
     "light": "#000000",
-    "dark": "#000000",
+    "dark": "#ffffff",
     "anchors": {
       "from": "#000000",
       "to": "#000000"
     },
     "background": {
       "light": "#eefaf0",
-      "dark": "#280b3e"  
+      "dark": "#200932"  
     }
   },
   "topbarLinks": [
