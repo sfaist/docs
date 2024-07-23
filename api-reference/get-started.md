@@ -1,5 +1,5 @@
 ---
-title: 'Get Started'
+title: 'Getting Started'
 ---
 
 <Note>
