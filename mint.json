@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Documentation",
   "logo": {
-    "dark": "logo/inverted.png",
-    "light": "logo/logo.png"
+    "dark": "logo/invertednew.png",
+    "light": "logo/logonew.png"
   },
   "favicon": "/logo/favicon.png",
   "colors": {
@@ -15,7 +15,7 @@
       "to": "#000000"
     },
     "background": {
-      "light": "#ffffff",
+      "light": "#AAE7B6",
       "dark": "#000000"  
     }
   },
