@@ -1,0 +1,34 @@
+---
+title: 'List any product on the internet in minutes.'
+description: 'index makes any platform shoppable by providing universal product data and order APIs - fueling shopping experiences for marketplaces, media, and social commerce.'
+---
+
+## What is index?
+
+index is the data layer for commerce applications, designed to make any marketplace, media platform, or app shoppable by providing robust product data and order APIs. Our moat is that we provide access to virtually all merchants' listing information in seconds and aggregate to make listings searchable.
+
+### Key Features
+
+- **Always up to date Product Information for any store**: Find products based on queries, links, or GTINs.
+- **Universal order interface**: Connect to any merchant's store and start selling any product.
+- **Earn \$\$\$ through our network of merchants**: Earn commissions from our network of merchants and providers.
+
+### How index Works
+
+The index Product Data Engine is basically a search engine for commerce. It ingests data from:
+
+- Web sources
+- Product feeds
+- Custom files
+
+Using our custom trained AI, index then:
+
+1. Automatically understands the structure of the data
+2. Transforms data into the desired target structure
+3. Hosts the processed data for easy access
+
+## How to get started
+
+index is currently in beta. Please [reach out](https://calendly.com/sfaist/15min) if you want to get early access.
+
+Once you have signed up, you can check out our [API reference](https://docs.index-commerce.com/api-reference/get-started) to learn how to extract and transform your data. You can also use our [dashboard](https://dashboard.index-commerce.com) to manage your sources and data.

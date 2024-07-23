@@ -29,15 +29,8 @@
   ],
   "navigation": [
     {
-      "group": "API Documentation",
-      "pages": [
-        "introduction",
-        "api-reference/extract",
-        "api-reference/transform",
-        "api-reference/jobs",
-        "api-reference/types",
-        "api-reference/search"
-      ]
+      "group": "What is index?",
+      "pages": ["introduction"]
     },
     {
       "group": "Handbook",
@@ -50,6 +43,17 @@
         "handbook/who-we-do-business-with",
         "handbook/terms",
         "handbook/privacy"
+      ]
+    },
+    {
+      "group": "API Documentation",
+      "pages": [
+        "api-reference/get-started",
+        "api-reference/extract",
+        "api-reference/transform",
+        "api-reference/jobs",
+        "api-reference/types",
+        "api-reference/search"
       ]
     }
   ],
