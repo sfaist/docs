@@ -17,11 +17,7 @@
   },
   "topbarLinks": [
     {
-      "name": "Home",
-      "url": "https://docs.index-commerce.com/"
-    },
-    {
-      "name": "API Reference",
+      "name": "API",
       "url": "https://docs.index-commerce.com/"
     },
     {
