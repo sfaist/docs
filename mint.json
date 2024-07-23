@@ -17,13 +17,21 @@
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:support@index-commerce.com"
+      "name": "Home",
+      "url": "https://docs.index-commerce.com/"
+    },
+    {
+      "name": "API Reference",
+      "url": "https://docs.index-commerce.com/"
+    },
+    {
+      "name": "Control Panel",
+      "url": "https://dashboard.index-commerce.com/"
     }
   ],
   "topbarCtaButton": {
-    "name": "Control Panel",
-    "url": "https://dashboard.index-commerce.com/"
+    "name": "Talk to us",
+    "url": "https://calendly.com/sfaist/15min"
   },
   "anchors": [
   ],
