@@ -14,7 +14,7 @@ We act as genuine partners with our customers. We feel as motivated to help and 
 
 - **Engineers helping engineers:** There is nothing more frustrating than talking to a salesperson who can't give you all the answers. We keep 'let me find out from the team' to an absolute minimum.
 
-- **Hands-on Setup:** We leverage our own engineering team to help users set up their infrastructure with index. This is an integral part of our deployment strategy, and we are very good at getting people up and running quickly.
+- **Hands-on Onboarding:** We leverage our own engineering team to help users set up their infrastructure with index. This is an integral part of our deployment strategy, and we are very good at getting people up and running quickly.
 
 - **We don't do margin negative deals in order to win:** This doesn't set us up for a successful long term relationship with a paying customer if we're ultimately losing money to land them. Yes, this includes fancy companies whose logos would make us look good. 
 

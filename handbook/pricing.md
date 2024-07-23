@@ -6,8 +6,6 @@ showTitle: true
 
 Our pricing is simple and transparent, based on the number of SKUs in your catalog on average each month. We offer a generous free tier to help you get started.
 
-It can be daunting to figure out how much a usage-based platform like index will cost, but there are simple ways to estimate your usage and costs.
-
 ## Why do we price based on usage?
 
 Really it comes down to this: The more you use index, the more value you get, and the more it costs us to process and store your data. Thus, we charge based on usage.
