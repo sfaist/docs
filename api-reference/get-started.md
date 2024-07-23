@@ -12,28 +12,28 @@ Once you've signed up, you can start extracting and transforming your data. You 
 <Card
   title="Extract"
   icon="ufo"
-  href="https://docs.index-commerce.com/api-reference/extract"
+  href="/api-reference/extract"
 >
   Learn how to extract products from your sources and the web
 </Card>
 <Card
   title="Transform"
   icon="map"
-  href="https://docs.index-commerce.com/api-reference/transform"
+  href="/api-reference/transform"
 >
   Learn how to transform and manage products
 </Card>
 <Card
   title="Jobs"
   icon="user-doctor"
-  href="https://docs.index-commerce.com/api-reference/jobs"
+  href="/api-reference/jobs"
 >
   Learn how to run jobs to store products and keep them up to date
 </Card>
 <Card
   title="Search"
   icon="searchengin"
-  href="https://docs.index-commerce.com/api-reference/search"
+  href="/api-reference/search"
 >
   Learn how to search for stored products
 </Card>

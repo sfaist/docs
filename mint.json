@@ -18,7 +18,7 @@
   "topbarLinks": [
     {
       "name": "API",
-      "url": "https://docs.index-commerce.com/"
+      "url": "/api-reference/get-started"
     },
     {
       "name": "Control Panel",
