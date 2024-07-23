@@ -4,9 +4,9 @@ sidebar: Handbook
 showTitle: true
 ---
 
-Our primary focus is on making our customers successful with our product, making sure they are happy with index and its performance.
+Our primary focus is on making you, our customer, successful with our product, making sure you are happy with index and its performance.
 
-The Sales team act as genuine partners with our users. We should feel as motivated to help and delight users as if we were on their team. In practical terms, this means:
+We act as genuine partners with our customers. We feel as motivated to help and delight them as if we were on their team. In practical terms, this means:
 
 - No sales-y talk - we are direct, open and honest with customers. We share as much as possible publicly, rather than hiding it behind a mandatory demo call. We are honest when we don't know the answer, or if we're not sure that index is the right solution for a customer.
 
@@ -14,10 +14,9 @@ The Sales team act as genuine partners with our users. We should feel as motivat
 
 - Engineers helping engineers - there is nothing more frustrating than talking to a salesperson who can't give you all the answers. We keep 'let me find out from the team' to an absolute minimum.
 
-- We leverage our own engineering team to help users set up their infrastructure with index. This is an integral part of our deployment strategy, and we are very good at getting people up and running quickly.
+- Hands-on Setup - We leverage our own engineering team to help users set up their infrastructure with index. This is an integral part of our deployment strategy, and we are very good at getting people up and running quickly.
 
 - We don't do margin negative deals in order to win - this doesn't set us up for a successful long term relationship with a paying customer if we're ultimately losing money to land them. Yes, this includes fancy companies whose logos would make us look good. 
-
 
 ## Sales vision 
 
@@ -35,11 +34,10 @@ The Sales team act as genuine partners with our users. We should feel as motivat
 
 ## Target customers
 
-We have defined our ICP as anyone who:
+We define our ICP as anyone who:
 - Innovates or plans to innovate in the commerce space
-- Need to excel at product-led growth to remain competitive
 - Has a budget, and savvy engineers to implement the product
 - Has achieved some level of product-market fit
-- Operating in USA, UK, or EU, see [who we do business with](/handbook/who-we-do-business-with)
+- Operates in USA, UK, or EU, see [who we do business with](/handbook/who-we-do-business-with)
 
 This does not mean that we will only be talking to people who do not fit these criteria if they have a similar need or will grow into an ICP soon.
