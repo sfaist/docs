@@ -15,7 +15,7 @@
       "to": "#000000"
     },
     "background": {
-      "light": "bg-gradient-to-tr from-[#E7F5FD] via-[#E6F9F6] to-[#E3FCEF]",
+      "light": "#E3FCEF",
       "dark": "#000000"  
     }
   },
