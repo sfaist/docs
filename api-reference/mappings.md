@@ -4,12 +4,6 @@ title: 'Mappings and Transformations'
 
 This document outlines the API operations available for managing and applying mappings and transformations to product data.
 
-## Table of Contents
-1. [Queries](#queries)
-2. [Mutations](#mutations)
-3. [Advanced Features](#advanced-features)
-4. [Best Practices](#best-practices)
-
 ## Queries
 
 ### applyMapping
