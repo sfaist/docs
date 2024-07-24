@@ -58,8 +58,10 @@
       "pages": [
         "api-reference/get-started",
         "api-reference/extract",
-        "api-reference/transform",
+        "api-reference/sources",
+        "api-reference/target-formats",
         "api-reference/validate",
+        "api-reference/mappings",
         "api-reference/jobs",
         "api-reference/types",
         "api-reference/search"

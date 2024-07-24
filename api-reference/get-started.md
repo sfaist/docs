@@ -14,14 +14,28 @@ Once you've signed up, you can start extracting and transforming your data. You 
   icon="ufo"
   href="/api-reference/extract"
 >
-  Learn how to extract products from your sources and the web
+  Learn how to extract product information from the web
 </Card>
 <Card
-  title="Transform"
-  icon="map"
-  href="/api-reference/transform"
+  title="Sources"
+  icon="cauldron"
+  href="/api-reference/sources"
 >
-  Learn how to transform and manage products
+  Learn how to add and manage sources
+</Card>
+<Card
+  title="Target Formats"
+  icon="bullseye"
+  href="/api-reference/mappings"
+>
+  Learn how to use target formats for mappings and validation
+</Card>
+<Card
+  title="Mappings & Transformations"
+  icon="map"
+  href="/api-reference/mappings"
+>
+  Learn how to manage mappings and transformations
 </Card>
 <Card
   title="Jobs"
@@ -35,7 +49,7 @@ Once you've signed up, you can start extracting and transforming your data. You 
   icon="searchengin"
   href="/api-reference/search"
 >
-  Learn how to search for stored products
+  Learn how to search for products within your sources
 </Card>
 </CardGroup>
 
