@@ -2,10 +2,6 @@
 title: 'Mappings and Transformations'
 ---
 
-Certainly. Here's a comprehensive markdown document that covers mappings and transformations:
-
-# Mappings and Transformations
-
 This document outlines the API operations available for managing and applying mappings and transformations to product data.
 
 ## Table of Contents
