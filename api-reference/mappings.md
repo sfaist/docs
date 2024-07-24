@@ -267,41 +267,20 @@ query {
 
 Transformation functions allow you to modify or convert data as part of the mapping process. These functions can be applied to source fields before they are mapped to target fields. Here's a list of available transformation functions with examples:
 
-- `capitalize()`: Capitalizes the first letter of each word.
-  Example: `"product name" -> "Product Name"`
-
-- `trim()`: Removes whitespace from both ends of a string.
-  Example: `"  product  " -> "product"`
-
-- `toNumber()`: Converts a string to a number.
-  Example: `"123.45" -> 123.45`
-
-- `toBoolean()`: Converts a value to a boolean.
-  Example: `"true" -> true, "1" -> true, "false" -> false, "0" -> false`
-
-- `toString()`: Converts a value to a string.
-  Example: `123 -> "123"`
-
-- `removeHTMLTags()`: Strips HTML tags from a string.
-  Example: `"<p>Product description</p>" -> "Product description"`
-
-- `convert(fromUnit, toUnit)`: Converts between units.
-  Example: `convert("cm", "in")` applied to `"100" -> "39.37"`
-
-- `split(separator, index)`: Splits a string and returns the specified index.
-  Example: `split(",", "1")` applied to `"red,green,blue" -> "green"`
-
-- `slice(start, end?)`: Returns a portion of an array or string.
-  Example: `slice("1", "3")` applied to `"abcdef" -> "bcd"`
-
-- `match(regex)`: Returns the first match of a regular expression.
-  Example: `match("\\d+")` applied to `"Product123" -> "123"`
-
-- `replace(search, replacement)`: Replaces all occurrences of a substring.
-  Example: `replace("old", "new")` applied to `"old product" -> "new product"`
-
-- `join(separator)`: Joins array elements into a string.
-  Example: `join(", ")` applied to `["red", "green", "blue"] -> "red, green, blue"`
+| Function         | Description                                               | Example                                      |
+|------------------|-----------------------------------------------------------|----------------------------------------------|
+| `capitalize()`   | Capitalizes the first letter of each word.                | `"product name" -> "Product Name"`           |
+| `trim()`         | Removes whitespace from both ends of a string.            | `"  product  " -> "product"`                 |
+| `toNumber()`     | Converts a string to a number.                            | `"123.45" -> 123.45`                         |
+| `toBoolean()`    | Converts a value to a boolean.                            | `"true" -> true, "1" -> true, "false" -> false, "0" -> false` |
+| `toString()`     | Converts a value to a string.                             | `123 -> "123"`                               |
+| `removeHTMLTags()` | Strips HTML tags from a string.                         | `"<p>Product description</p>" -> "Product description"` |
+| `convert(fromUnit, toUnit)` | Converts between units.                        | `convert("cm", "in")` applied to `"100" -> "39.37"` |
+| `split(separator, index)` | Splits a string and returns the specified index. | `split(",", "1")` applied to `"red,green,blue" -> "green"` |
+| `slice(start, end?)` | Returns a portion of an array or string.              | `slice("1", "3")` applied to `"abcdef" -> "bcd"` |
+| `match(regex)`   | Returns the first match of a regular expression.          | `match("\\d+")` applied to `"Product123" -> "123"` |
+| `replace(search, replacement)` | Replaces all occurrences of a substring.    | `replace("old", "new")` applied to `"old product" -> "new product"` |
+| `join(separator)`| Joins array elements into a string.                       | `join(", ")` applied to `["red", "green", "blue"] -> "red, green, blue"` |
 
 These functions can be used in the `transform` field of a mapping definition. For example:
 
