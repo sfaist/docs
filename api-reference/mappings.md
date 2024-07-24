@@ -214,59 +214,116 @@ mutation {
 }
 ```
 
+Certainly! I'll expand on the Transformation Functions and Choice Mappings sections, incorporating the specific transformations you've provided. Here's an enhanced version of these advanced features:
+
 ## Advanced Features
 
-1. **Complex Field Mapping**: 
-   - Array selectors: e.g., `images[0]` to select the first image
-   - Nested field access: e.g., `variants[0].price`
-   - Constant values: e.g., `"'TRUE'"` to set a constant value
+2. **Transformation Functions**
 
-Example:
+Transformation functions allow you to modify or convert data as part of the mapping process. These functions can be applied to source fields before they are mapped to target fields. Here's a list of available transformation functions with examples:
+
+- `capitalize()`: Capitalizes the first letter of each word.
+  Example: `"product name" -> "Product Name"`
+
+- `trim()`: Removes whitespace from both ends of a string.
+  Example: `"  product  " -> "product"`
+
+- `toNumber()`: Converts a string to a number.
+  Example: `"123.45" -> 123.45`
+
+- `toBoolean()`: Converts a value to a boolean.
+  Example: `"true" -> true, "1" -> true, "false" -> false, "0" -> false`
+
+- `toString()`: Converts a value to a string.
+  Example: `123 -> "123"`
+
+- `removeHTMLTags()`: Strips HTML tags from a string.
+  Example: `"<p>Product description</p>" -> "Product description"`
+
+- `convert(fromUnit, toUnit)`: Converts between units.
+  Example: `convert("cm", "in")` applied to `"100" -> "39.37"`
+
+- `split(separator, index)`: Splits a string and returns the specified index.
+  Example: `split(",", "1")` applied to `"red,green,blue" -> "green"`
+
+- `slice(start, end?)`: Returns a portion of an array or string.
+  Example: `slice("1", "3")` applied to `"abcdef" -> "bcd"`
+
+- `match(regex)`: Returns the first match of a regular expression.
+  Example: `match("\\d+")` applied to `"Product123" -> "123"`
+
+- `replace(search, replacement)`: Replaces all occurrences of a substring.
+  Example: `replace("old", "new")` applied to `"old product" -> "new product"`
+
+- `join(separator)`: Joins array elements into a string.
+  Example: `join(", ")` applied to `["red", "green", "blue"] -> "red, green, blue"`
+
+These functions can be used in the `transform` field of a mapping definition. For example:
+
 ```graphql
-query {
-  applyMappingWithDefinition(
-    data: {
-      "product": {
-        "title": "Gaming Laptop",
-        "variants": [
-          {
-            "price": "999.99",
-            "inventory_quantity": 5
-          }
-        ],
-        "images": [
-          "https://example.com/image1.jpg",
-          "https://example.com/image2.jpg"
-        ]
-      }
-    },
-    mapping: [
-      {
-        "sourceField": "product.title",
-        "targetField": "name"
-      },
-      {
-        "sourceField": "product.variants[0].price",
-        "targetField": "price",
-      },
-      {
-        "sourceField": "product.images[0]",
-        "targetField": "mainImage"
-      },
-      {
-        "sourceField": "product.variants[0].inventory_quantity",
-        "targetField": "inStock",
-        "transform": "value > 0"
-      }
-    ]
-  )
+{
+  "sourceField": "product.description",
+  "targetField": "cleanDescription",
+  "transform": "removeHTMLTags().trim().capitalize()"
 }
 ```
 
-2. **Transformation Functions**: A set of predefined transformation functions are available for use in mappings, such as `toNumber()`, `trim()`, `replace()`, etc.
+This would remove HTML tags, trim whitespace, and capitalize the first letter of each word in the product description.
 
-3. **Choice Mappings**: For fields with predefined choices, mappings can specify how source values should be mapped to target choices.
+3. **Choice Mappings**
 
-4. **Dynamic Mapping Generation**: The `generateMapping` query uses AI to automatically create mappings based on sample data and a target format.
+Choice mappings allow you to map specific source values to predefined target values. This is particularly useful for standardizing categorical data or handling enumerations. Here's an expanded explanation with examples:
 
-5. **User-Specific Mappings**: Mappings are associated with specific users, allowing for personalized data transformation workflows.
+```graphql
+{
+  "sourceField": "product.status",
+  "targetField": "productStatus",
+  "choices": {
+    "active": ["in_stock", "available", "1"],
+    "inactive": ["out_of_stock", "unavailable", "0"],
+    "discontinued": ["retired", "end_of_life"]
+  }
+}
+```
+
+In this example:
+- If the source field contains "in_stock", "available", or "1", it will be mapped to "active" in the target field.
+- If the source field contains "out_of_stock", "unavailable", or "0", it will be mapped to "inactive".
+- If the source field contains "retired" or "end_of_life", it will be mapped to "discontinued".
+
+You can also combine choice mappings with transformation functions:
+
+```graphql
+{
+  "sourceField": "product.category",
+  "targetField": "mainCategory",
+  "transform": "trim().toLowerCase()",
+  "choices": {
+    "electronics": ["tech", "gadgets", "devices"],
+    "clothing": ["apparel", "fashion", "wear"],
+    "home": ["household", "interior", "domestic"]
+  }
+}
+```
+
+In this case, the source field is first trimmed and converted to lowercase before being matched against the choices.
+
+Choice mappings can also handle more complex scenarios:
+
+```graphql
+{
+  "sourceField": "product.attributes",
+  "targetField": "productType",
+  "transform": "join(', ').toLowerCase()",
+  "choices": {
+    "smartphone": ["mobile", "phone", "cellular"],
+    "laptop": ["notebook", "computer", "pc"],
+    "tablet": ["ipad", "slate", "pad"],
+    "other": [""]
+  }
+}
+```
+
+This example assumes `product.attributes` is an array. It joins the array into a string, converts it to lowercase, and then matches against the choices to determine the `productType`.
+
+By using these advanced features, you can create powerful and flexible mappings that can handle a wide variety of data transformation scenarios.
