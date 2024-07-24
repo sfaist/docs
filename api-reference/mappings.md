@@ -214,9 +214,54 @@ mutation {
 }
 ```
 
-Certainly! I'll expand on the Transformation Functions and Choice Mappings sections, incorporating the specific transformations you've provided. Here's an enhanced version of these advanced features:
-
 ## Advanced Features
+
+1. **Complex Field Mapping**: 
+   - Array selectors: e.g., `images[0]` to select the first image
+   - Nested field access: e.g., `variants[0].price`
+   - Constant values: e.g., `"'TRUE'"` to set a constant value
+
+Example:
+```graphql
+query {
+  applyMappingWithDefinition(
+    data: {
+      "product": {
+        "title": "Gaming Laptop",
+        "variants": [
+          {
+            "price": "999.99",
+            "inventory_quantity": 5
+          }
+        ],
+        "images": [
+          "https://example.com/image1.jpg",
+          "https://example.com/image2.jpg"
+        ]
+      }
+    },
+    mapping: [
+      {
+        "sourceField": "product.title",
+        "targetField": "name"
+      },
+      {
+        "sourceField": "product.variants[0].price",
+        "targetField": "price",
+      },
+      {
+        "sourceField": "product.images[0]",
+        "targetField": "mainImage"
+      },
+      {
+        "sourceField": "product.variants[0].inventory_quantity",
+        "targetField": "inStock",
+        "transform": "value > 0"
+      }
+    ]
+  )
+}
+```
 
 2. **Transformation Functions**
 
