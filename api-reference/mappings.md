@@ -216,7 +216,7 @@ mutation {
 
 ## Advanced Features
 
-1. **Complex Field Mapping**: 
+### Complex Field Mapping 
    - Array selectors: e.g., `images[0]` to select the first image
    - Nested field access: e.g., `variants[0].price`
    - Constant values: e.g., `"'TRUE'"` to set a constant value
@@ -263,7 +263,7 @@ query {
 }
 ```
 
-2. **Transformation Functions**
+### Transformation Functions
 
 Transformation functions allow you to modify or convert data as part of the mapping process. These functions can be applied to source fields before they are mapped to target fields. Here's a list of available transformation functions with examples:
 
@@ -315,7 +315,7 @@ These functions can be used in the `transform` field of a mapping definition. Fo
 
 This would remove HTML tags, trim whitespace, and capitalize the first letter of each word in the product description.
 
-3. **Choice Mappings**
+### Choice Mappings
 
 Choice mappings allow you to map specific source values to predefined target values. This is particularly useful for standardizing categorical data or handling enumerations. Here's an expanded explanation with examples:
 
