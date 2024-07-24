@@ -194,4 +194,4 @@ mutation {
 
 ## Validation Using Target Formats
 
-Target Formats can be used to validate product data, ensuring it meets the specified structure and rules. For detailed information on product validation, please refer to the [validate.md](validate.md) document.
+Target Formats can be used to validate product data, ensuring it meets the specified structure and rules. For detailed information on product validation, please refer to [Product Validation](./validate).
