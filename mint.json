@@ -59,6 +59,7 @@
         "api-reference/get-started",
         "api-reference/extract",
         "api-reference/transform",
+        "api-reference/validate",
         "api-reference/jobs",
         "api-reference/types",
         "api-reference/search"
