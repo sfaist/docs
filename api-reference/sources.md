@@ -99,7 +99,6 @@ mutation {
     source: {
       name: "CJ Affiliate Feed",
       type: CJ,
-      url: "https://api.cj.com",
       credentials: { 
         accessToken: "YOUR_CJ_ACCESS_TOKEN", 
         companyId: "YOUR_CJ_COMPANY_ID" 
