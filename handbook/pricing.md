@@ -33,13 +33,13 @@ For SKUs from other sources such as Shopify, APIs, and other sources: **$0.60 pe
 ## How It Works
 
 1. Your first 2,000 SKUs each month are always free.
-2. We count the number of unique SKUs processed beyond the free tier.
+2. We count the number of unique SKUs in your catalog beyond the free tier.
 3. SKUs are categorized by source (feeds or other).
 4. Your monthly bill is calculated based on the volume in each category, after the free tier.
 
 ## How to estimate your usage
 
-Let's say you have a catalog with 100,000 SKUs.
+Let's say you have a catalog with 150,000 SKUs.
 * 100,000 SKUs from feeds
 * 50,000 SKUs from other sources
 
@@ -57,6 +57,7 @@ We offer yearly plans and support agreements for enterprise customers. You can f
 
 ## Benefits
 
+* No cost or quota for queries, searches, and affiliate purchases
 * Generous free tier for small businesses and startups
 * No hidden fees
 * Pay only for what you use beyond the free tier
