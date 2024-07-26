@@ -103,7 +103,7 @@ mutation {
       credentials: { 
         accessToken: "YOUR_CJ_ACCESS_TOKEN", 
         companyId: "YOUR_CJ_COMPANY_ID" 
-      } # Credentials will be stored securely and cannot be retrieved once save
+      } # Credentials will be stored securely and cannot be retrieved once saved
     }
   )
 }
