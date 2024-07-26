@@ -19,16 +19,8 @@ Really it comes down to this: The more you use index, the more value you get, an
 
 | Source | Price per 1,000 SKUs per month |
 |--------|----------------------|
-| Feeds \& Files  | $0.30        |
-| Other    | $0.60              |
-
-### Feed Sources
-
-Process SKUs from feed and file sources at our most affordable rate:**$0.30 per 1,000 SKUs per month**
-
-### Other Sources
-
-For SKUs from other sources such as Shopify, APIs, and other sources: **$0.60 per 1,000 SKUs per month**
+| Product Feeds \& Files  | $0.30        |
+| Other (Shopify, APIs, etc.)    | $0.60              |
 
 ## How It Works
 
