@@ -8,35 +8,11 @@ Target Formats define the structure and validation rules for your product data. 
 
 A Target Format is composed of fields, each with its own set of properties:
 
-```typescript
-interface TargetFormatField {
-  type: 'string' | 'number' | 'boolean' | 'object';
-  description?: string;
-  choices?: string[];
-  attributes?: TargetFieldAttribute[];
-  fields?: TargetFormat;
-}
-
-enum TargetFieldAttribute {
-  required,
-  capitalized,
-  wholeNumber,
-  positiveNumber,
-  decimalNumber,
-  email,
-  url,
-  phoneNumber,
-  date,
-  time,
-  datetime,
-  currency,
-  percentage,
-}
-
-interface TargetFormat {
-  [key: string]: TargetFormatField;
-}
-```
+| Name | Type | Properties/Values | Description |
+|------|------|-------------------|-------------|
+| `TargetFormatField` | Interface | `type`: 'string' \| 'number' \| 'boolean' \| 'object'<br>`description?`: string<br>`choices?`: string[]<br>`attributes?`: TargetFieldAttribute[]<br>`fields?`: TargetFormatSchema | Defines the structure of a field in the target format |
+| `TargetFieldAttribute` | Enum | `required`<br>`capitalized`<br>`wholeNumber`<br>`positiveNumber`<br>`decimalNumber`<br>`email`<br>`url`<br>`phoneNumber`<br>`date`<br>`time`<br>`datetime`<br>`currency`<br>`percentage` | Enum of possible attributes for a target field |
+| `TargetFormatSchema` | Interface | `[key: string]`: TargetFormatField | Defines the overall structure of the target format, with keys as field names and values as TargetFormatField objects |
 
 ## Target Format Operations
 

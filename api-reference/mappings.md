@@ -17,12 +17,12 @@ Example:
 ```graphql
 query {
   applyMapping(
-    data: {
+    data: [{
       "product_name": "Wireless Mouse",
       "product_price": "29.99",
       "brand": "TechGear",
       "in_stock": true
-    },
+    }],
     mappingId: "mapping123"
   )
 }
@@ -349,5 +349,3 @@ Choice mappings can also handle more complex scenarios:
 ```
 
 This example assumes `product.attributes` is an array. It joins the array into a string, converts it to lowercase, and then matches against the choices to determine the `productType`.
-
-By using these advanced features, you can create powerful and flexible mappings that can handle a wide variety of data transformation scenarios.

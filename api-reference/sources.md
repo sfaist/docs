@@ -7,12 +7,11 @@ Sources represent the origin of your product data. They can be various platforms
 ## Types of Sources
 
 Sources can include, but are not limited to:
-- E-commerce platforms (e.g., Shopify, WooCommerce, Magento)
-- Inventory management systems
-- Spreadsheets or CSV files
-- External APIs
-- Databases
-- Affiliate networks (e.g., Commission Junction, ShareASale, Awin)
+- E-commerce platforms (Shopify)
+- Affiliate networks (CJ, Awin, Impact.com, Partnerize, ShareASale, Rakuten)
+- Custom data feeds or APIs
+
+The full list of supported source types is defined in the [`SourceType`](types#sourcetype) enum.
 
 ## Source Operations
 
@@ -24,6 +23,8 @@ Retrieves all registered sources.
 getSources: [SourceSchema!]
 ```
 
+This query returns an array of [`SourceSchema`](types#sourceschema) objects.
+
 #### Example:
 ```graphql
 query {
@@ -32,8 +33,6 @@ query {
     name
     type
     url
-    lastSyncDate
-    status
   }
 }
 ```
@@ -46,13 +45,14 @@ query {
       {
         "id": "12",
         "name": "My Shopify Store",
-        "type": "SHOPIFY",
-        "url": "https://mystore.myshopify.com/",
+        "type": "Shopify",
+        "url": "https://mystore.myshopify.com/"
       },
       {
         "id": "13",
         "name": "CJ Affiliate Feed",
         "type": "CJ",
+        "url": "https://api.cj.com"
       }
     ]
   }
@@ -67,13 +67,25 @@ Saves a new data source, including affiliate networks.
 saveSource(source: SourceRequest!, targetFormat: JSON!): ID!
 ```
 
+This mutation takes a [`SourceRequest`](types#sourcerequest) input and returns the ID of the newly created source.
+
+#### Supported Affiliate Networks
+| Affiliate Network | Required Credentials | Variable Names |
+|-------------------|----------------------|----------------|
+| CJ | Access Token<br>Company ID | `accessToken`<br>`companyId` |
+| Awin | Publisher ID<br>API Key | `publisherId`<br>`apiKey` |
+| Impact.com | Account SID<br>Auth Token | `accountSid`<br>`authToken` |
+| Partnerize | API Key<br>Publisher ID | `apiKey`<br>`publisherId` |
+| ShareASale | API Token<br>API Secret<br>Affiliate ID | `apiToken`<br>`apiSecret`<br>`affiliateId` |
+| Rakuten | Security Key<br>Tracking ID | `securityKey`<br>`trackingId` |
+
 #### Example for Shopify:
 ```graphql
 mutation {
   saveSource(
     source: {
       name: "MrBeast Shopify Store",
-      type: SHOPIFY,
+      type: Shopify,
       url: "https://mrbeast.shop/",
     }
   )
@@ -87,28 +99,8 @@ mutation {
     source: {
       name: "CJ Affiliate Feed",
       type: CJ,
-      credentials: { // Credentials will be stored securely and cannot be retrieved once saved
-        developerKey: "YOUR_CJ_DEVELOPER_KEY", 
-        websiteId: "YOUR_CJ_WEBSITE_ID"
-      }
-    }
-  )
-}
-```
-
-#### Example for ShareASale:
-```graphql
-mutation {
-  saveSource(
-    source: {
-      name: "ShareASale Feed",
-      type: SHAREASALE,
-      url: "https://api.shareasale.com/x.cfm",
-      credentials: {
-        affiliateId: "YOUR_SHAREASALE_AFFILIATE_ID",
-        token: "YOUR_SHAREASALE_API_TOKEN",
-        secretKey: "YOUR_SHAREASALE_API_SECRET"
-      },
+      url: "https://api.cj.com",
+      credentials: { accessToken: "YOUR_CJ_ACCESS_TOKEN", companyId: "YOUR_CJ_COMPANY_ID" }
     }
   )
 }
@@ -146,3 +138,7 @@ mutation {
   }
 }
 ```
+
+## Note on Credentials
+
+For security reasons, sensitive credentials (like API keys) should be passed in the `credentials` field of the `SourceRequest`. These will be stored securely and cannot be retrieved once saved. 

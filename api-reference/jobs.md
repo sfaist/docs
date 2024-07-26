@@ -2,7 +2,7 @@
 title: 'Job Management'
 ---
 
-This section of the API focuses on managing and executing jobs. Jobs are a way to combine a source, a mapping, and a target format into a reusable workflow for data transformation.
+This section of the API focuses on managing and executing jobs. Jobs are a way to combine a source, a mapping, and a target format into a reusable workflow for data transformation that is executed every 24 hours.
 
 ## Queries
 
@@ -84,7 +84,7 @@ mutation {
 }
 ```
 
-This mutation triggers the execution of a saved job. It performs the following steps:
+This mutation triggers the manual execution of a saved job. It performs the following steps:
 1. Fetches data from the associated source
 2. Applies the specified mapping to the data
 3. Transforms the result into the target format
