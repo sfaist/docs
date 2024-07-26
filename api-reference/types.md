@@ -117,10 +117,6 @@ type ValidationResult {
 
 ## Key Points
 
-1. `SourceSchema`, `MappingSchema`, and `TargetFormatSchema` now include a `jobs` field, linking them to associated `JobSchema` instances.
-2. `JobSchema` includes `status` and references to its associated `SourceSchema`, `MappingSchema`, and `TargetFormatSchema`.
-3. `SourceType` enum has been expanded to include various affiliate networks and platforms.
-4. New `ValidationResult` type for product validation operations.
 5. Use `SourceRequest` for creating/updating sources, and `SourceSchema` for querying existing sources.
 6. `JSON` scalar is used for flexible configurations in mappings and target formats.
 7. Required fields are marked with `!`. Optional fields don't have this marker.
