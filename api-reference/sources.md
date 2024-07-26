@@ -72,7 +72,7 @@ This mutation takes a [`SourceRequest`](types#sourcerequest) input and returns t
 #### Supported Affiliate Networks
 | Affiliate Network | Required Credentials | Variable Names |
 |-------------------|----------------------|----------------|
-| CJ | Access Token, Company ID | `accessToken`, `companyId` |
+| CJ | [Access Token](https://developers.cj.com/account/personal-access-tokens), [Company ID (CID)](https://profile.cj.com/manage-accounts) | `accessToken`, `companyId` |
 | Awin | Publisher ID, API Key | `publisherId`, `apiKey` |
 | Impact.com | Account SID, Auth Token | `accountSid`, `authToken` |
 | Partnerize | API Key, Publisher ID | `apiKey`, `publisherId` |
