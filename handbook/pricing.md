@@ -4,7 +4,7 @@ sidebar: Handbook
 showTitle: true
 ---
 
-Our pricing is simple and transparent, based on the number of SKUs in your catalog on average each month. We offer a generous free tier to help you get started.
+Our pricing is simple and transparent, based on the number of SKUs in your catalog on average each month. We do not charge for queries or affiliate purchases and offer a generous free tier to help you get started.
 
 ## Why do we price based on usage?
 
