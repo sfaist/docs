@@ -72,12 +72,12 @@ This mutation takes a [`SourceRequest`](types#sourcerequest) input and returns t
 #### Supported Affiliate Networks
 | Affiliate Network | Required Credentials | Variable Names |
 |-------------------|----------------------|----------------|
-| CJ | Access Token<br>Company ID | `accessToken`<br>`companyId` |
-| Awin | Publisher ID<br>API Key | `publisherId`<br>`apiKey` |
-| Impact.com | Account SID<br>Auth Token | `accountSid`<br>`authToken` |
-| Partnerize | API Key<br>Publisher ID | `apiKey`<br>`publisherId` |
-| ShareASale | API Token<br>API Secret<br>Affiliate ID | `apiToken`<br>`apiSecret`<br>`affiliateId` |
-| Rakuten | Security Key<br>Tracking ID | `securityKey`<br>`trackingId` |
+| CJ | Access Token, Company ID | `accessToken`, `companyId` |
+| Awin | Publisher ID, API Key | `publisherId`, `apiKey` |
+| Impact.com | Account SID, Auth Token | `accountSid`, `authToken` |
+| Partnerize | API Key, Publisher ID | `apiKey`, `publisherId` |
+| ShareASale | API Token, API Secret, Affiliate ID | `apiToken`, `apiSecret`, `affiliateId` |
+| Rakuten | Security Key, Tracking ID | `securityKey`, `trackingId` |
 
 #### Example for Shopify:
 ```graphql

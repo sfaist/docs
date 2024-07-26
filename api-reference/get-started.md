@@ -20,7 +20,7 @@ Once you've signed up, you can start extracting and transforming your data. You 
 <Card
   title="Sources"
   icon="cauldron"
-  href="/api-reference/source"
+  href="/api-reference/sources"
 >
   Learn how to add and manage sources
 </Card>
