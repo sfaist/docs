@@ -3,7 +3,8 @@ title: 'Getting Started'
 ---
 
 <Note>
-  index is currently in closed beta. Please [reach out](https://calendly.com/sfaist/15min) if you want to get early access.
+  index is currently in closed beta. Please [reach out](https://calendar.app.google/jQVSUAfNheaqS9JE6
+  ) if you want to get early access.
 </Note>
 
 Once you've signed up, you can start extracting and transforming your data. You can also use our [dashboard](https://dashboard.index-commerce.com) to manage your sources and data.
