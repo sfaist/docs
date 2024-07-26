@@ -60,7 +60,7 @@ query {
 ```
 
 ### Mutation: saveSource
-
+ 
 Saves a new data source, including affiliate networks.
 
 ```graphql
