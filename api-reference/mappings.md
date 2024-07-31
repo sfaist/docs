@@ -7,265 +7,141 @@ This document outlines the API operations available for managing and applying ma
 ## Queries
 
 ### applyMapping
-Applies a saved mapping to the provided data.
+Applies a saved mapping to transform data from a source into a specified target format. Specify both the source data and the mapping configuration to be used.
 
 ```graphql
-applyMapping(data: JSON!, mappingId: ID): JSON!
+applyMapping(
+  source: SourceInput!, 
+  mapping: MappingInput!, 
+  targetFormat: TargetFormatInput
+): [JSON!]
 ```
+
+If no target format is provided, the default target format will be used.
 
 Example:
 ```graphql
 query {
   applyMapping(
-    data: [{
-      "product_name": "Wireless Mouse",
-      "product_price": "29.99",
-      "brand": "TechGear",
-      "in_stock": true
-    }],
-    mappingId: "mapping123"
-  )
-}
-```
-
-### applyMappingWithDefinition
-Applies a custom mapping to transform product data.
-
-```graphql
-applyMappingWithDefinition(data: JSON!, mapping: JSON!): JSON!
-```
-
-Example:
-```graphql
-query {
-  applyMappingWithDefinition(
-    data: {
-      "product_name": "Wireless Mouse",
-      "product_price": "29.99",
-      "brand": "TechGear",
-      "in_stock": true
+    source: {
+      id: "source123",
+      data: [
+        {
+          "product_name": "Wireless Mouse",
+          "product_price": "29.99",
+          "brand": "TechGear",
+          "in_stock": true
+        }
+      ]
     },
-    mapping: [
-      {
-        "sourceField": "product_name",
-        "targetField": "name"
-        "transform": "value.capitalize()"
-      },
-      {
-        "sourceField": "product_price",
-        "targetField": "price",
-      },
-      {
-        "sourceField": "brand",
-        "targetField": "manufacturer"
-      },
-      {
-        "sourceField": "in_stock",
-        "targetField": "availability"
-      }
-    ]
+    mapping: {
+      id: "mapping123"
+    },
+    targetFormat: {
+      id: "format123"
+    }
   )
 }
 ```
 
 ### generateMapping
-Generates a mapping based on sample data and a desired target format.
+Generates a mapping based on provided sample data and the desired target format. Use this to create a new mapping configuration by analyzing the structure and fields in the sample data.
 
 ```graphql
-generateMapping(sampleData: [JSON!]!, targetFormat: JSON!): JSON!
+generateMapping(
+  sampleData: SourceInput!, 
+  targetFormat: TargetFormatInput
+): [JSON!]
 ```
 
-Example:
+If no target format is provided, the default target format will be used.
+
+#### Example:
 ```graphql
 query {
   generateMapping(
-    sampleData: [
-      {
-        "product_name": "Ergonomic Chair",
-        "product_price": 199.99,
-        "brand": "ComfortSeating",
-        "in_stock": true
-      }
-    ],
+    sampleData: {
+      data: [
+        {
+          "product_name": "Ergonomic Chair",
+          "product_price": 199.99,
+          "brand": "ComfortSeating",
+          "in_stock": true
+        }
+      ]
+    },
     targetFormat: {
-      "name": { "type": "string" },
-      "price": { "type": "number" },
-      "manufacturer": { "type": "string" },
-      "availability": { "type": "boolean" }
+      data: {
+        "name": { "type": "string" },
+        "price": { "type": "number" },
+        "manufacturer": { "type": "string" },
+        "availability": { "type": "boolean" }
+      }
     }
   )
 }
 ```
 
-### transform
-Applies a transformation to the provided data using a saved target format.
+## Additional Mapping Functions
 
-```graphql
-transform(data: JSON!, targetFormatID: ID!): JSON!
-```
+### Complex Field Mapping
+Use advanced features like array selectors, nested field access, and constant values to customize data mapping.
 
-Example:
 ```graphql
 query {
-  transform(
-    data: [
-      {
-        "product_name": "Wireless Mouse",
-        "product_price": "29.99",
-        "brand": "TechGear",
-        "in_stock": true
-      }
-    ],
-    targetFormatID: "format123"
-  )
-}
-```
-
-### transformWithDefinition
-Applies a transformation to the provided data using a custom target format.
-
-```graphql
-transformWithDefinition(data: JSON!, targetFormat: JSON!): JSON!
-```
-
-Example:
-```graphql
-query {
-  transformWithDefinition(
-    data: [
-      {
-        "product_name": "Wireless Mouse",
-        "product_price": "29.99",
-        "brand": "TechGear",
-        "in_stock": true
-      }
-    ],
-    targetFormat: {
-      "name": { "type": "string" },
-      "price": { "type": "number" },
-      "manufacturer": { "type": "string" },
-      "availability": { "type": "boolean" }
-    }
-  )
-}
-```
-
-### getMappings
-Retrieves all saved mappings.
-
-```graphql
-getMappings: [MappingSchema!]
-```
-
-Example:
-```graphql
-query {
-  getMappings {
-    id
-    mapping
-  }
-}
-```
-
-## Mutations
-
-### saveMapping
-Saves a new mapping.
-
-```graphql
-saveMapping(name: String!, mapping: JSON!): ID!
-```
-
-Example:
-```graphql
-mutation {
-  saveMapping(
-    name: "Shopify to Standard Format",
-    mapping: [
-      {
-        "sourceField": "title",
-        "targetField": "name",
-        "transform": "value.capitalize()"
-      },
-      {
-        "sourceField": "price",
-        "targetField": "salePrice",
-      },
-      {
-        "sourceField": "brand",
-        "targetField": "manufacturer"
-      }
-    ]
-  )
-}
-```
-
-### deleteMapping
-Deletes a saved mapping.
-
-```graphql
-deleteMapping(id: ID!): Boolean!
-```
-
-Example:
-```graphql
-mutation {
-  deleteMapping(id: "mapping123")
-}
-```
-
-## Advanced Features
-
-### Complex Field Mapping 
-   - Array selectors: e.g., `images[0]` to select the first image
-   - Nested field access: e.g., `variants[0].price`
-   - Constant values: e.g., `"'TRUE'"` to set a constant value
-
-Example:
-```graphql
-query {
-  applyMappingWithDefinition(
-    data: {
-      "product": {
-        "title": "Gaming Laptop",
-        "variants": [
-          {
-            "price": "999.99",
-            "inventory_quantity": 5
-          }
-        ],
-        "images": [
-          "https://example.com/image1.jpg",
-          "https://example.com/image2.jpg"
-        ]
+  applyMapping(
+    source: {
+      data: {
+        "product": {
+          "title": "Gaming Laptop",
+          "variants": [
+            {
+              "price": "999.99",
+              "inventory_quantity": 5
+            }
+          ],
+          "images": [
+            "https://example.com/image1.jpg",
+            "https://example.com/image2.jpg"
+          ]
+        }
       }
     },
-    mapping: [
-      {
-        "sourceField": "product.title",
-        "targetField": "name"
-      },
-      {
-        "sourceField": "product.variants[0].price",
-        "targetField": "price",
-      },
-      {
-        "sourceField": "product.images[0]",
-        "targetField": "mainImage"
-      },
-      {
-        "sourceField": "product.variants[0].inventory_quantity",
-        "targetField": "inStock",
-        "transform": "value > 0"
+    mapping: {
+      data: [
+        {
+          "sourceField": "product.title",
+          "targetField": "name"
+        },
+        {
+          "sourceField": "product.variants[0].price",
+          "targetField": "price"
+        },
+        {
+          "sourceField": "product.images[0]",
+          "targetField": "mainImage"
+        },
+        {
+          "sourceField": "product.variants[0].inventory_quantity",
+          "targetField": "inStock",
+          "transform": "value > 0"
+        }
+      ]
+    },
+    targetFormat: {
+      data: {
+        "name": { "type": "string" },
+        "price": { "type": "number" },
+        "mainImage": { "type": "string" },
+        "inStock": { "type": "boolean" }
       }
-    ]
+    }
   )
 }
 ```
 
 ### Transformation Functions
-
-Transformation functions allow you to modify or convert data as part of the mapping process. These functions can be applied to source fields before they are mapped to target fields. Here's a list of available transformation functions with examples:
+Use transformation functions to modify data as part of the mapping process. These functions manipulate and convert field values, providing flexibility in how data is processed.
 
 | Function         | Description                                               | Example                                      |
 |------------------|-----------------------------------------------------------|----------------------------------------------|
@@ -282,7 +158,7 @@ Transformation functions allow you to modify or convert data as part of the mapp
 | `replace(search, replacement)` | Replaces all occurrences of a substring.    | `replace("old", "new")` applied to `"old product" -> "new product"` |
 | `join(separator)`| Joins array elements into a string.                       | `join(", ")` applied to `["red", "green", "blue"] -> "red, green, blue"` |
 
-These functions can be used in the `transform` field of a mapping definition. For example:
+Example usage of transformation functions in a mapping:
 
 ```graphql
 {
@@ -292,11 +168,8 @@ These functions can be used in the `transform` field of a mapping definition. Fo
 }
 ```
 
-This would remove HTML tags, trim whitespace, and capitalize the first letter of each word in the product description.
-
 ### Choice Mappings
-
-Choice mappings allow you to map specific source values to predefined target values. This is particularly useful for standardizing categorical data or handling enumerations. Here's an expanded explanation with examples:
+Use choice mappings to standardize and map specific source values to predefined target values, making it easier to handle categorical data or enumerations.
 
 ```graphql
 {
@@ -310,12 +183,7 @@ Choice mappings allow you to map specific source values to predefined target val
 }
 ```
 
-In this example:
-- If the source field contains "in_stock", "available", or "1", it will be mapped to "active" in the target field.
-- If the source field contains "out_of_stock", "unavailable", or "0", it will be mapped to "inactive".
-- If the source field contains "retired" or "end_of_life", it will be mapped to "discontinued".
-
-You can also combine choice mappings with transformation functions:
+Combining choice mappings with transformation functions:
 
 ```graphql
 {
@@ -330,9 +198,7 @@ You can also combine choice mappings with transformation functions:
 }
 ```
 
-In this case, the source field is first trimmed and converted to lowercase before being matched against the choices.
-
-Choice mappings can also handle more complex scenarios:
+More complex example:
 
 ```graphql
 {
@@ -347,5 +213,3 @@ Choice mappings can also handle more complex scenarios:
   }
 }
 ```
-
-This example assumes `product.attributes` is an array. It joins the array into a string, converts it to lowercase, and then matches against the choices to determine the `productType`.

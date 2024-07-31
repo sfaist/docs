@@ -8,11 +8,14 @@ Target Formats define the structure and validation rules for your product data. 
 
 A Target Format is composed of fields, each with its own set of properties:
 
-| Name | Type | Properties/Values | Description |
-|------|------|-------------------|-------------|
-| `TargetFormatField` | Interface | `type`: 'string' \| 'number' \| 'boolean' \| 'object'<br>`description?`: string<br>`choices?`: string[]<br>`attributes?`: TargetFieldAttribute[]<br>`fields?`: TargetFormatSchema | Defines the structure of a field in the target format |
+Certainly! I'll update the table with the information you provided. Here's the revised table for the Target Format Schema:
+
+| Name | Type | Properties | Description |
+|------|------|------------|-------------|
+| `TargetFormatSchema` | Interface | `id`: string<br>`targetFormat`: TargetFormat<br>`name?`: string<br>`jobs?`: JobSchema[]<br>`default?`: boolean | Defines the overall structure of a target format |
+| `TargetFormat` | Interface | `[key: string]`: TargetFormatField | Defines the structure of the target format, with keys as field names and values as TargetFormatField objects |
+| `TargetFormatField` | Interface | `type`: 'string' \| 'number' \| 'boolean' \| 'object'<br>`description?`: string<br>`choices?`: string[]<br>`attributes?`: TargetFieldAttribute[]<br>`fields?`: TargetFormat | Defines the structure of a field in the target format |
 | `TargetFieldAttribute` | Enum | `required`<br>`capitalized`<br>`wholeNumber`<br>`positiveNumber`<br>`decimalNumber`<br>`email`<br>`url`<br>`phoneNumber`<br>`date`<br>`time`<br>`datetime`<br>`currency`<br>`percentage` | Enum of possible attributes for a target field |
-| `TargetFormatSchema` | Interface | `[key: string]`: TargetFormatField | Defines the overall structure of the target format, with keys as field names and values as TargetFormatField objects |
 
 ## Target Format Operations
 
@@ -31,6 +34,11 @@ query {
     id
     name
     targetFormat
+    default
+    jobs {
+      id
+      status
+    }
   }
 }
 ```
@@ -41,7 +49,7 @@ query {
   "data": {
     "getTargetFormats": [
       {
-        "id": "format1",
+        "id": "453",
         "name": "Standard Product Format",
         "targetFormat": {
           "Status": {
@@ -75,7 +83,14 @@ query {
             "description": "SEO-optimized title for the product page",
             "attributes": ["capitalized"]
           }
-        }
+        },
+        "default": true,
+        "jobs": [
+          {
+            "id": "job1",
+            "status": "Live"
+          }
+        ]
       }
     ]
   }
@@ -87,7 +102,7 @@ query {
 Saves a new target format.
 
 ```graphql
-saveTargetFormat(name: String!, targetFormat: JSON!): ID!
+saveTargetFormat(name: String, targetFormat: [JSON!]!, makeDefault: Boolean): ID
 ```
 
 #### Example:
@@ -95,42 +110,45 @@ saveTargetFormat(name: String!, targetFormat: JSON!): ID!
 mutation {
   saveTargetFormat(
     name: "Extended Product Format",
-    targetFormat: {
-      "Name": {
-        "type": "string",
-        "description": "Product name",
-        "attributes": ["required", "capitalized"]
-      },
-      "Price": {
-        "type": "number",
-        "description": "Product price",
-        "attributes": ["required", "positiveNumber", "currency"]
-      },
-      "Description": {
-        "type": "string",
-        "description": "Product description"
-      },
-      "Category": {
-        "type": "string",
-        "description": "Product category",
-        "attributes": ["required"]
-      },
-      "Stock": {
-        "type": "number",
-        "description": "Current stock quantity",
-        "attributes": ["required", "wholeNumber"]
-      },
-      "Rating": {
-        "type": "number",
-        "description": "Product rating (0-5)",
-        "attributes": ["decimalNumber"]
-      },
-      "Launch Date": {
-        "type": "string",
-        "description": "Product launch date",
-        "attributes": ["date"]
+    targetFormat: [
+      {
+        "Name": {
+          "type": "string",
+          "description": "Product name",
+          "attributes": ["required", "capitalized"]
+        },
+        "Price": {
+          "type": "number",
+          "description": "Product price",
+          "attributes": ["required", "positiveNumber", "currency"]
+        },
+        "Description": {
+          "type": "string",
+          "description": "Product description"
+        },
+        "Category": {
+          "type": "string",
+          "description": "Product category",
+          "attributes": ["required"]
+        },
+        "Stock": {
+          "type": "number",
+          "description": "Current stock quantity",
+          "attributes": ["required", "wholeNumber"]
+        },
+        "Rating": {
+          "type": "number",
+          "description": "Product rating (0-5)",
+          "attributes": ["decimalNumber"]
+        },
+        "Launch Date": {
+          "type": "string",
+          "description": "Product launch date",
+          "attributes": ["date"]
+        }
       }
-    }
+    ],
+    makeDefault: false
   )
 }
 ```
@@ -164,6 +182,30 @@ mutation {
 {
   "data": {
     "deleteTargetFormat": true
+  }
+}
+```
+
+### Mutation: setDefaultTargetFormat
+
+Sets a target format as the default.
+
+```graphql
+setDefaultTargetFormat(id: ID!): Boolean!
+```
+
+#### Example:
+```graphql
+mutation {
+  setDefaultTargetFormat(id: "54")
+}
+```
+
+#### Response:
+```json
+{
+  "data": {
+    "setDefaultTargetFormat": true // whether the target format was set as default successfully
   }
 }
 ```

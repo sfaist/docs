@@ -15,7 +15,7 @@ Once you've signed up, you can start extracting and transforming your data. You 
   icon="ufo"
   href="/api-reference/extract"
 >
-  Learn how to extract product information from the web
+  Learn how to extract product information from your catalog and the web
 </Card>
 <Card
   title="Sources"

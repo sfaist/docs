@@ -6,38 +6,60 @@ The `validateProducts` function is used to validate an array of products against
 
 ## Function Signature
 
-```typescript
-validateProducts(data: [JSON!]!, targetFormat: JSON!): [ValidationResult!]
+```graphql
+validateProducts(data: [JSON!]!, targetFormat: TargetFormatInput): [ValidationResult!]
 ```
 
 ### Parameters
 
 - `data`: An array of JSON objects representing the products to be validated.
-- `targetFormat`: A JSON object specifying the validation rules for each field.
+- `targetFormat`: Specifies the structure to validate against, either as ID or object array, see [TargetFormatInput](./types#targetformatinput). If not specified, the default target format will be used.
 
 ### Return Value
 
-An array of `ValidationResult` objects, each containing:
+An array of `ValidationResult` objects, one for each product, each containing:
 
-- `name`: The name of the product (String)
 - `valid`: A boolean indicating whether the product passed all validations
 - `errors`: An array of JSON objects containing any validation errors
 
+```graphql
+type ValidationResult {
+  valid: Boolean!
+  errors: [JSON!]
+}
+```
+
 ## Usage
 
-```typescript
-const products = [
-  { name: "Product 1", price: "10.99", category: "Electronics" },
-  { name: "Product 2", price: "invalid", category: "" }
-];
-
-const targetFormat = {
-  name: { attributes: ["required", "capitalized"] },
-  price: { attributes: ["required", "positiveNumber"] },
-  category: { attributes: ["required"] }
-};
-
-const results = await validateProducts(products, targetFormat);
+```graphql
+query {
+  validateProducts(
+    data: [
+      { name: "Product 1", price: 10.99, category: "Electronics" },
+      { name: "Product 2", price: -5, category: "" }
+    ],
+    targetFormat: {
+      id: "4545", # use an ID from the saved target format
+      data: {     # alternatively, submit the target format as a JSON object
+        "Name": {
+          "type": "string",
+          "description": "Product name",
+          "attributes": ["required", "capitalized"]
+        },
+        "Price": {
+          "type": "number",
+          "description": "Product price",
+          "attributes": ["required", "positiveNumber", "currency"]
+        },
+        "Category": {
+          "type": "string",
+          "description": "Product category",
+          "attributes": ["required"]
+        }
+      } 
+    }
+  )
+}
 ```
 
 ## Validation Rules
@@ -46,35 +68,44 @@ The `targetFormat` object specifies the validation rules for each field. The fol
 
 - `required`: Field must not be empty
 - `capitalized`: Each word in the field must start with an uppercase letter
-- `wholeNumber`: Field must be a whole number
 - `positiveNumber`: Field must be a positive number
-- `decimalNumber`: Field must be a decimal number
-- `email`: Field must be a valid email address
-- `url`: Field must be a valid URL
-- `phoneNumber`: Field must be a valid phone number
-- `datetime`: Field must be a valid datetime in the format "YYYY-MM-DDTHH:mm:ss"
 - `currency`: Field must be a valid currency amount
-- `percentage`: Field must be a valid percentage
+
+Additional attributes may be available depending on the specific implementation.
 
 ## Examples
 
 ### Example 1: Basic Validation
 
-```typescript
-const products = [
-  { name: "Laptop", price: "999.99", category: "Electronics" },
-  { name: "smartphone", price: "-100", category: "" }
-];
-
-const targetFormat = {
-  name: { attributes: ["required", "capitalized"] },
-  price: { attributes: ["required", "positiveNumber"] },
-  category: { attributes: ["required"] }
-};
-
-const results = await validateProducts(products, targetFormat);
-
-console.log(results);
+```graphql
+query {
+  validateProducts(
+    data: [
+      { name: "Laptop", price: 999.99, category: "Electronics" },
+      { name: "smartphone", price: -100, category: "" }
+    ],
+    targetFormat: {
+      id: "basic-format",
+      data: {
+        "Name": {
+          "type": "string",
+          "description": "Product name",
+          "attributes": ["required", "capitalized"]
+        },
+        "Price": {
+          "type": "number",
+          "description": "Product price",
+          "attributes": ["required", "positiveNumber", "currency"]
+        },
+        "Category": {
+          "type": "string",
+          "description": "Product category",
+          "attributes": ["required"]
+        }
+      }
+    }
+  )
+}
 ```
 
 Expected output:
@@ -82,17 +113,15 @@ Expected output:
 ```javascript
 [
   {
-    name: "Laptop",
     valid: true,
     errors: []
   },
   {
-    name: "smartphone",
     valid: false,
     errors: [
-      { name: "name must be capitalized (each word's first letter should be uppercase)" },
-      { price: "price must be a positive number" },
-      { category: "category is required" }
+      { name: "Name must be capitalized (each word's first letter should be uppercase)" },
+      { price: "Price must be a positive number" },
+      { category: "Category is required" }
     ]
   }
 ]
@@ -100,35 +129,57 @@ Expected output:
 
 ### Example 2: Advanced Validation
 
-```typescript
-const products = [
-  {
-    name: "Smart Watch",
-    price: "199.99",
-    email: "contact@smartwatch.com",
-    releaseDate: "2023-05-15T10:00:00",
-    discount: "10%"
-  },
-  {
-    name: "Fitness tracker",
-    price: "49.99",
-    email: "invalid-email",
-    releaseDate: "2023-05-15",
-    discount: "5"
-  }
-];
-
-const targetFormat = {
-  name: { attributes: ["required", "capitalized"] },
-  price: { attributes: ["required", "positiveNumber"] },
-  email: { attributes: ["required", "email"] },
-  releaseDate: { attributes: ["required", "datetime"] },
-  discount: { attributes: ["required", "percentage"] }
-};
-
-const results = await validateProducts(products, targetFormat);
-
-console.log(results);
+```graphql
+query {
+  validateProducts(
+    data: [
+      {
+        name: "Smart Watch",
+        price: 199.99,
+        email: "contact@smartwatch.com",
+        releaseDate: "2023-05-15T10:00:00",
+        discount: 10
+      },
+      {
+        name: "Fitness tracker",
+        price: 49.99,
+        email: "invalid-email",
+        releaseDate: "2023-05-15",
+        discount: 5
+      }
+    ],
+    targetFormat: {
+      id: "advanced-format",
+      data: {
+        "Name": {
+          "type": "string",
+          "description": "Product name",
+          "attributes": ["required", "capitalized"]
+        },
+        "Price": {
+          "type": "number",
+          "description": "Product price",
+          "attributes": ["required", "positiveNumber", "currency"]
+        },
+        "Email": {
+          "type": "string",
+          "description": "Contact email",
+          "attributes": ["required", "email"]
+        },
+        "ReleaseDate": {
+          "type": "string",
+          "description": "Product release date",
+          "attributes": ["required", "datetime"]
+        },
+        "Discount": {
+          "type": "number",
+          "description": "Product discount percentage",
+          "attributes": ["required", "percentage"]
+        }
+      }
+    }
+  )
+}
 ```
 
 Expected output:
@@ -136,19 +187,19 @@ Expected output:
 ```javascript
 [
   {
-    name: "Smart Watch",
     valid: true,
     errors: []
   },
   {
-    name: "Fitness tracker",
     valid: false,
     errors: [
-      { name: "name must be capitalized (each word's first letter should be uppercase)" },
-      { email: "email must be a valid email" },
-      { releaseDate: "releaseDate must be a valid datetime" },
-      { discount: "discount must be a valid percentage" }
+      { name: "Name must be capitalized (each word's first letter should be uppercase)" },
+      { email: "Email must be a valid email address" },
+      { releaseDate: "ReleaseDate must be a valid datetime in the format YYYY-MM-DDTHH:mm:ss" },
+      { discount: "Discount must be a valid percentage" }
     ]
   }
 ]
 ```
+
+This updated documentation reflects the new schema structure and provides examples using the GraphQL query format. It also references the TargetFormatInput type, which should be detailed in the Types documentation.

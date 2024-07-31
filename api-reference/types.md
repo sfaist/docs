@@ -10,9 +10,10 @@ Represents a data source configuration.
 ```graphql
 type SourceSchema {
   id: ID!
-  name: String!
+  name: String
   type: SourceType!
-  url: String!
+  url: String
+  description: String
   sourceHeaders: [String!]
   sourceBody: String
   sourceMethod: String
@@ -26,6 +27,7 @@ Represents a saved mapping configuration.
 ```graphql
 type MappingSchema {
   id: ID!
+  name: String
   mapping: JSON!
   jobs: [JobSchema!]
 }
@@ -37,8 +39,10 @@ Represents a saved target format configuration.
 ```graphql
 type TargetFormatSchema {
   id: ID!
+  name: String
   targetFormat: JSON!
   jobs: [JobSchema!]
+  default: Boolean!
 }
 ```
 
@@ -52,6 +56,7 @@ type JobSchema {
   sourceID: ID!
   mappingID: ID!
   targetSchemaID: ID!
+  lastRun: String
   source: SourceSchema
   mapping: MappingSchema
   targetFormat: TargetFormatSchema
@@ -65,12 +70,45 @@ Used when creating or updating a source.
 
 ```graphql
 input SourceRequest {
-  name: String!
+  name: String
   type: SourceType!
-  url: String!
+  url: String
+  credentials: JSON
+  description: String
   sourceHeaders: [String!]
   sourceBody: String
   sourceMethod: String
+}
+```
+
+### SourceInput
+Specifies data for interacting with sources. Users can either provide an `id` to reference an existing source or provide a `sourceRequest` object to define a new source.
+
+```graphql
+input SourceInput {
+  id: ID
+  sourceRequest: SourceRequest
+  data: [JSON!]
+}
+```
+
+### MappingInput
+Used for specifying mappings. Users can provide an `id` to reference an existing mapping or provide data as a list of JSON objects.
+
+```graphql
+input MappingInput {
+  id: ID
+  data: [JSON!]
+}
+```
+
+### TargetFormatInput
+Defines the target format for data operations. Users can either reference an existing format using an `id` or provide the format as a JSON object.
+
+```graphql
+input TargetFormatInput {
+  id: ID
+  data: JSON
 }
 ```
 
@@ -81,42 +119,29 @@ Defines the possible types of data sources.
 
 ```graphql
 enum SourceType {
-  Request, Index, CJ, Awin, Impact.com, Partnerize, ShareASale, Rakuten, Shopify
+  Request, # a url request
+  Index, # an index commerce source specified by name
+  Shopify, # a shopify source specified by shop url
+  CJ,
+  Awin, 
+  Impact_com, 
+  ShareASale, 
+  Rakuten, 
+  Shopify,
+  ClickBank,
+  FlexOffers
 }
 ```
+
+Refer to the [Data Sources](./sources) documentation for more information on using each data source type.
 
 ### QueryType
-Defines the possible types of queries for product retrieval.
 
-```graphql
-enum QueryType {
-  Link, Text, GTIN, ImageLink
-}
-```
+Used in various queries to specify the type of query:
 
-## Scalars
+- `Link`: Search by product URL.
+- `Text`: Search by text (e.g., product name).
+- `GTIN`: Search by Global Trade Item Number.
+- `ImageLink`: Search by image URL.
 
-### JSON
-Represents a JSON object. Used for flexible data structures.
-
-```graphql
-scalar JSON
-```
-
-## Additional Types
-
-### ValidationResult
-Represents the result of product validation.
-
-```graphql
-type ValidationResult {
-  valid: Boolean!
-  errors: [JSON!]
-}
-```
-
-## Key Points
-
-5. Use `SourceRequest` for creating/updating sources, and `SourceSchema` for querying existing sources.
-6. `JSON` scalar is used for flexible configurations in mappings and target formats.
-7. Required fields are marked with `!`. Optional fields don't have this marker.
+Refer to the [Product Extraction](./extract) documentation for more information on using each query type.
