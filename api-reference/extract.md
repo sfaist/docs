@@ -1,4 +1,4 @@
---- 
+---
 title: 'Product Fetching'
 ---
 
@@ -20,6 +20,7 @@ Parameters:
 - `targetFormat`: Specifies the structure of the returned data, either as ID or object array, see [`TargetFormatInput`](./types#targetformatinput). If not specified, the default target format will be used.
 
 #### Example:
+
 ```graphql
 query {
   getProduct(
@@ -66,11 +67,12 @@ Parameters:
 For example, to return all documents that match a filter, use: query: "*" with searchOptions: {filter_by: "Brand:Zara"}. To exclude words in your query explicitly, prefix the word with the - operator, e.g. q: 'electric car -tesla'.
 
 #### Example:
+
 ```graphql
 query {
   findInCatalog(
     query: "red shoes",
-    type: Text
+    type: Text,
     searchOptions: {
       query_by: ["Name", "Description"],
       limit: 10,
@@ -93,6 +95,7 @@ Parameters:
 - `targetFormat`: Specifies the structure of the returned data, either as ID or object array, see [`TargetFormatInput`](./types#targetformatinput). If not specified, the default target format will be used.
 
 #### Example:
+
 ```graphql
 query {
   getFromSource(
@@ -139,7 +142,8 @@ Parameters:
 
 For details on the input type, see [`SourceInput`](./types#sourceinput).
 
-Example:
+#### Example:
+
 ```graphql
 query {
   getProductPreview(
