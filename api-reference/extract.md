@@ -60,11 +60,11 @@ findInCatalog(query: String!, type: QueryType!, searchOptions: JSON): [JSON!]
 ```
 
 Parameters:
-- `query`: The search term or identifier for the products. Use `&ast;` as the search string to return all documents. This is typically useful when used in conjunction with searchOptions like filter_by.
+- `query`: The search term or identifier for the products. Use `*` as the search string to return all documents. This is typically useful when used in conjunction with searchOptions like filter_by.
 - `type`: The type of query (Link, Text, GTIN, or ImageLink).
 - `searchOptions`: An object containing additional search options, see [`search`](./search).
 
-For example, to return all documents that match a filter, use: query: `&ast;` with searchOptions: `{filter_by: "Brand:Zara"}`. To exclude words in your query explicitly, prefix the word with the - operator, e.g. q: 'electric car -tesla'.
+For example, to return all documents that match a filter, use: `query: *` with searchOptions: `{filter_by: "Brand:Zara"}`. To exclude words in your query explicitly, prefix the word with the - operator, e.g. q: 'electric car -tesla'.
 
 
 #### Example:
