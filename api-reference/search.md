@@ -2,13 +2,44 @@
 title: 'Search'
 ---
 
-In Index Commerce, a search consists of a query against one or more text fields and a list of filters against numerical or facet fields. You can also sort and facet your results.
+## Find In Catalog
 
-You can use the [`findInCatalog`](./extract#findincatalog) API to search your catalog for products matching the given query.
+Search your catalog for products matching the given query. Returns an array of JSON objects representing the found products.
 
-## Search Parameters
+```graphql
+findInCatalog(query: String!, type: QueryType!, searchOptions: JSON): [JSON!]
+```
 
-### Query parameters
+Parameters:
+- `query`: The search term or identifier for the products. Use `"*"` as the search string to return all documents. This is typically useful when used in conjunction with searchOptions like filter_by.
+- `type`: The type of query (`Link`, `Text`, `GTIN`, or `ImageLink`).
+- `searchOptions`: An object containing additional search options, see [`Search`](./search).
+
+For example, to return all documents that match a filter, use: `query: "*"` with searchOptions: `{filter_by: "Brand:Zara"}`. To exclude words in your query explicitly, prefix the word with the - operator, e.g. q: 'electric car -tesla'.
+
+### Example:
+
+```graphql
+query {
+  findInCatalog(
+    query: "red shoes",
+    type: Text,
+    searchOptions: {
+      query_by: ["Name", "Description"],
+      limit: 10,
+      offset: 0
+    }
+  )
+}
+```
+
+```graphql
+findInCatalog(query: String!, type: QueryType!, searchOptions: JSON): [JSON!]
+```
+
+### Search Options
+
+#### Query parameters
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
@@ -20,14 +51,14 @@ You can use the [`findInCatalog`](./extract#findincatalog) API to search your ca
 | vector_query | no | Perform a nearest-neighbor vector query. Read more about Vector Search. |
 | voice_query | no | Transcribe the base64-encoded speech recording, and do a search with the transcribed query. Read more about Voice Query. |
 
-### Filter parameters
+#### Filter parameters
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
 | filter_by | no | Filter conditions for refining your search results. A field can be matched against one or more values. Examples: - country: USA - country: \[USA, UK] returns documents that have country of USA OR UK. Exact vs Non-Exact Filtering: To match a string field's full value verbatim, you can use the := (exact match) operator. For eg: category := Shoe will match documents with category set as Shoe and not documents with a category field set as Shoe Rack. Using the : (non-exact) operator will do a word-level partial match on the field, without taking token position into account (so is usually faster). Eg: category:Shoe will match records with category of Shoe or Shoe Rack or Outdoor Shoe. Tip: If you have a field that doesn't have any spaces in the values across any documents and want to filter on it, you want to use the : operator to improve performance, since it will avoid doing token position checks. Escaping Commas: You can also filter using multiple values and use the backtick character to denote a string literal: category:= \[\`Running Shoes, Men\`, Sneaker]. Negation: Not equals / negation is supported via the :!= operator, e.g. author:!=JK Rowling or id:!=\[id1, id2]. You can also negate multiple values: author:!=\[JK Rowling, Gilbert Patten] To exclude results that contains a specific string during filtering you can do artist:! Jackson will exclude all documents whose artist field value contains the word jackson. Numeric Filtering: Filter documents with numeric values between a min and max value, using the range operator \[min..max] or using simple comparison operators \>, \>= \<, \<=, =. You can enable "range_index": true on the numerical field schema for fast range queries (this will incur additional memory overhead though). Examples: -num_employees:\[10..100] -num_employees:\<40 -num_employees:\[10..100,40] (Filter docs where value is between 10 to 100 or exactly 40). Multiple Conditions: You can separate multiple conditions with the && operator. Examples: - num_employees:\>100 && country: \[USA, UK] - categories:=Shoes && categories:=Outdoor To do ORs across different fields (eg: color is blue OR category is Shoe), you can use the \|\| operator. Examples: - color: blue \|\| category: shoe - (color: blue \|\| category: shoe) && in_stock: true Filtering Arrays: filter_by can be used with array fields as well. For eg: If genres is a string\[] field: - genres:=\[Rock, Pop] will return documents where the genres array field contains Rock OR Pop. - genres:=Rock && genres:=Acoustic will return documents where the genres array field contains both Rock AND Acoustic. Prefix filtering: You can filter on records that begin with a given prefix string like this: company_name: Acm* This will will return documents with names that begin with acm, for e.g. a name like Acme Corp.. Geo Filtering: Read more about GeoSearch and filtering in this dedicated section. |
 | enable_lazy_filter | no | Applies the filtering operation incrementally / lazily. Set this to true when you are potentially filtering on large values but the tokens in the query are expected to match very few documents. Default: false. |
 
-### Ranking and Sorting parameters
+#### Ranking and Sorting parameters
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
@@ -43,7 +74,7 @@ You can use the [`findInCatalog`](./extract#findincatalog) API to search your ca
 | override_tags | no | You can trigger particular override rules that you've tagged using their tag name(s) in this search parameter. Read more here. |
 | max_candidates | no | Control the number of similar words that Index Commerce considers for prefix and typo searching . Default: 4 (or 10000 if exhaustive_search is enabled). For e.g. Searching for "ap", will match records with "apple", "apply", "apart", "apron", or any of hundreds of similar words that start with "ap" in your dataset. Also, searching for "jofn", will match records with "john", "joan" and all similar variations that are 1-typo away in your dataset. But for performance reasons, Index Commerce will only consider the top 4 prefixes and typo variations by default. The 4 is what is configurable using the max_candidates search parameter. In short, if you search for a short term like say "a", and not all the records you expect are returned, you want to increase max_candidates to a higher value and/or change the default_sorting_field in the collection schema to define "top" using some popularity score in your records. |
 
-### Pagination parameters
+#### Pagination parameters
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
@@ -52,7 +83,7 @@ You can use the [`findInCatalog`](./extract#findincatalog) API to search your ca
 | offset | no | Identifies the starting point to return hits from a result set. Can be used as an alternative to the page parameter. |
 | limit | no | Number of hits to fetch. Can be used as an alternative to the per_page parameter. Default: 10. |
 
-### Faceting parameters
+#### Faceting parameters
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
@@ -64,7 +95,7 @@ You can use the [`findInCatalog`](./extract#findincatalog) API to search your ca
 | facet_sample_percent | no | Percentage of hits that will be used to estimate facet counts. Facet sampling is helpful to improve facet computation speed for large datasets, where the exact count is not required in the UI. Default: 100 (sampling is disabled by default). |
 | facet_sample_threshold | no | Minimum number of hits above which the facet counts are sampled. Facet sampling is helpful to improve facet computation speed for large datasets, where the exact count is not required in the UI. Default: 0. |
 
-### Grouping parameters
+#### Grouping parameters
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
@@ -72,7 +103,7 @@ You can use the [`findInCatalog`](./extract#findincatalog) API to search your ca
 | group_limit | no | Maximum number of hits to be returned for every group. If the group_limit is set as K then only the top K hits in each group are returned in the response. Default: 3 |
 | group_missing_values | no | Setting this parameter to true will place all documents that have a null value in the group_by field, into a single group. Setting this parameter to false, will cause each document with a null value in the group_by field to not be grouped with other documents. Default: true |
 
-### Results parameters
+#### Results parameters
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
@@ -89,7 +120,7 @@ You can use the [`findInCatalog`](./extract#findincatalog) API to search your ca
 | search_cutoff_ms | no | Index Commerce will attempt to return results early if the cutoff time has elapsed. This is not a strict guarantee and facet computation is not bound by this parameter. Default: no search cutoff happens. |
 | exhaustive_search | no | Setting this to true will make Index Commerce consider all variations of prefixes and typo corrections of the words in the query exhaustively, without stopping early when enough results are found (drop_tokens_threshold and typo_tokens_threshold configurations are ignored). Default: false |
 
-### Typo-Tolerance parameters
+#### Typo-Tolerance parameters
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
@@ -102,14 +133,7 @@ You can use the [`findInCatalog`](./extract#findincatalog) API to search your ca
 | drop_tokens_mode | no | Dictates the direction in which the words in the query must be dropped when the original words in the query do not appear in any document. Values: right_to_left (default), left_to_right, both_sides:3 A note on both_sides:3 - for queries upto 3 tokens (words) in length, this mode will drop tokens from both sides and exhaustively rank all matching results. If query length is greater than 3 words, Index Commerce will just fallback to default behavior of right_to_left |
 | enable_typos_for_numerical_tokens | no | Set this parameter to false to disable typos on numerical query tokens. Default: true. |
 
-### Caching parameters
-
-| Parameter | Required | Description |
-|-----------|----------|-------------|
-| use_cache | no | Enable server side caching of search query results. By default, caching is disabled. Default: false |
-| cache_ttl | no | The duration (in seconds) that determines how long the search query is cached. This value can only be set as part of a scoped API key. Default: 60 |
-
-## Filter Results
+### Filter Results
 
 You can use the filter_by search parameter to filter results by a particular value(s) or logical expressions.
 
@@ -117,7 +141,7 @@ For eg: if you have dataset of movies, you can apply a filter to only return mov
 
 🔗 You'll find detailed documentation for filter_by in the Filter Parameters table above.
 
-## Sort Results
+### Sort Results
 
 You can use the sort_by search parameter to sort results by upto 3 fields in a tie-breaking mechanism - if the first field has the same values, then the second field is used. If the 1st and 2nd fields have the same values, then the 3rd field is used to break the tie.
 
@@ -125,11 +149,11 @@ The text similarity score is exposed as a special _text_match field that you can
 
 🔗 You'll find detailed documentation for sort_by in the Ranking Parameters table above.
 
-### Sorting on numeric values
+#### Sorting on numeric values
 
 Sorting is enabled by default on all numeric and boolean values. You can directly use these fields in the sort_by parameter.
 
-### Sorting on strings
+#### Sorting on strings
 
 Sorting on a string field is only allowed if that field has the sort property enabled in the collection schema.
 
@@ -155,7 +179,7 @@ TIP
 
 Sorting on a string field requires the construction of a separate index that can consume a lot of memory for long string fields (like description) or in large datasets. So, care must be taken to enable sorting on only relevant string fields.
 
-### Sorting based on conditions
+#### Sorting based on conditions
 
 You can sort documents based on any expressions that evaluate to either true or false, using the special _eval(\<expression>) operation as a sort_by parameter.
 
@@ -171,7 +195,7 @@ For eg:
 
 This will result in documents where in_stock is set to true to be ranked first, followed by documents where in_stock is set to false.
 
-### Sorting based on filter score
+#### Sorting based on filter score
 
 Instead of sorting on just true / false values like above, we can also provide custom scores to the records matching a bunch of filter clauses.
 
@@ -185,7 +209,7 @@ For example, if we have a shoes collection and if we wish to rank all Nike shoes
 
 There can be as many expressions as needed in the _eval and each of those expressions can be as complex as standard filter_by expressions.
 
-### Sorting null, empty or missing values
+#### Sorting null, empty or missing values
 
 For optional numerical fields, missing or null values are always sorted to the end regardless of the sort order.
 

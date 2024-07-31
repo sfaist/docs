@@ -53,36 +53,7 @@ This query allows you to search for any product using various identifiers. The `
 
 ### findInCatalog
 
-Search your catalog for products matching the given query. Returns an array of JSON objects representing the found products.
-
-```graphql
-findInCatalog(query: String!, type: QueryType!, searchOptions: JSON): [JSON!]
-```
-
-Parameters:
-- `query`: The search term or identifier for the products. Use `"*"` as the search string to return all documents. This is typically useful when used in conjunction with searchOptions like filter_by.
-- `type`: The type of query (`Link`, `Text`, `GTIN`, or `ImageLink`).
-- `searchOptions`: An object containing additional search options, see [`search`](./search).
-
-For example, to return all documents that match a filter, use: `query: "*"` with searchOptions: `{filter_by: "Brand:Zara"}`. To exclude words in your query explicitly, prefix the word with the - operator, e.g. q: 'electric car -tesla'.
-
-
-#### Example:
-
-```graphql
-query {
-  findInCatalog(
-    query: "red shoes",
-    type: Text,
-    searchOptions: {
-      query_by: ["Name", "Description"],
-      limit: 10,
-      offset: 0
-    }
-  )
-}
-```
-
+Search your catalog for products matching the given query, see [`Search`](./search).
 
 ### getFromSource
 
