@@ -2,6 +2,85 @@
 title: 'Product Fetching'
 ---
 
+This API allows you to extract product information in a structured way from your catalog and the web.
+
+## Key Queries
+
+### getProduct
+
+Fetch a single product based on a specified query and type from the web.
+
+```graphql
+getProduct(query: String!, type: QueryType!, targetFormat: TargetFormatInput): JSON
+```
+
+Parameters:
+- `query`: The search term or identifier for the product. 
+- `type`: The type of query (Link, Text, GTIN, or ImageLink).
+- `targetFormat`: Specifies the structure of the returned data, either as ID or object array, see [`TargetFormatInput`](./types#targetformatinput). If not specified, the default target format will be used.
+
+#### Example:
+
+```graphql
+query {
+  getProduct(
+    query: "B08F7N4LF8",
+    type: GTIN,
+    targetFormat: {
+      id: "4545", # use an ID from the saved target format
+      data: {     # alternatively, submit the target format as a JSON object
+        "Name": {
+          "type": "string",
+          "description": "Product name",
+          "attributes": ["required", "capitalized"]
+        },
+        "Price": {
+          "type": "number",
+          "description": "Product price",
+          "attributes": ["required", "positiveNumber", "currency"]
+        },
+        "Description": {
+          "type": "string",
+          "description": "Product description"
+        }
+      }
+    }
+  )
+}
+```
+
+This query allows you to search for any product using various identifiers. The `targetFormat` parameter lets you define the structure of the returned data, ensuring you get exactly the fields you need in the format you specify.
+
+### findInCatalog
+
+Search your catalog for products matching the given query. Returns an array of JSON objects representing the found products.
+
+```graphql
+findInCatalog(query: String!, type: QueryType!, searchOptions: JSON): [JSON!]
+```
+
+Parameters:
+- `query`: The search term or identifier for the products. Use \"\*\" as the search string to return all documents. This is typically useful when used in conjunction with searchOptions like filter_by.
+- `type`: The type of query (Link, Text, GTIN, or ImageLink).
+- `searchOptions`: An object containing additional search options, see [`search`](./search).
+
+For example, to return all documents that match a filter, use: query: "*" with searchOptions: {filter_by: "Brand:Zara"}. To exclude words in your query explicitly, prefix the word with the - operator, e.g. q: 'electric car -tesla'.
+
+#### Example:
+
+```graphql
+query {
+  findInCatalog(
+    query: "red shoes",
+    type: Text,
+    searchOptions: {
+      query_by: ["Name", "Description"],
+      limit: 10,
+      offset: 0
+    }
+  )
+}
+```
 
 
 ### getFromSource
