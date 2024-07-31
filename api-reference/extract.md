@@ -2,30 +2,32 @@
 title: 'Product Fetching'
 ---
 
-This API allows you to extract product information in a structured way from your catalog and the web.
 
-## Key Queries
 
-### getProduct
+### getFromSource
 
-Fetch a single product based on a specified query and type from the web.
+Retrieve products from a specified source, applying a target format to the results.
 
 ```graphql
-getProduct(query: String!, type: QueryType!, targetFormat: TargetFormatInput): JSON
+getFromSource(source: SourceInput!, targetFormat: TargetFormatInput): [JSON!]
 ```
 
 Parameters:
-- `query`: The search term or identifier for the product. 
-- `type`: The type of query (Link, Text, GTIN, or ImageLink).
+- `source`: Defines the data source to fetch products from, see [`SourceInput`](./types#sourceinput).
 - `targetFormat`: Specifies the structure of the returned data, either as ID or object array, see [`TargetFormatInput`](./types#targetformatinput). If not specified, the default target format will be used.
 
 #### Example:
 
 ```graphql
 query {
-  getProduct(
-    query: "B08F7N4LF8",
-    type: GTIN,
+  getFromSource(
+    source: {
+      sourceRequest: {
+        name: "My Shopify Store",
+        type: Shopify,
+        url: "https://mystore.myshopify.com"
+      }
+    },
     targetFormat: {
       id: "4545", # use an ID from the saved target format
       data: {     # alternatively, submit the target format as a JSON object
@@ -49,34 +51,30 @@ query {
 }
 ```
 
-This query allows you to search for any product using various identifiers. The `targetFormat` parameter lets you define the structure of the returned data, ensuring you get exactly the fields you need in the format you specify.
+### getProductPreview
 
-### findInCatalog
-
-Search your catalog for products matching the given query. Returns an array of JSON objects representing the found products.
+Preview product data from a specified source without applying any transformations.
 
 ```graphql
-findInCatalog(query: String!, type: QueryType!, searchOptions: JSON): [JSON!]
+getProductPreview(source: SourceInput!): [JSON!]
 ```
 
 Parameters:
-- `query`: The search term or identifier for the products. Use "\*" as the search string to return all documents. This is typically useful when used in conjunction with searchOptions like filter_by.
-- `type`: The type of query (Link, Text, GTIN, or ImageLink).
-- `searchOptions`: An object containing additional search options, see [`search`](./search).
+- `source`: Defines the data source to fetch the product preview from.
 
-For example, to return all documents that match a filter, use: query: "*" with searchOptions: {filter_by: "Brand:Zara"}. To exclude words in your query explicitly, prefix the word with the - operator, e.g. q: 'electric car -tesla'.
+For details on the input type, see [`SourceInput`](./types#sourceinput).
 
 #### Example:
 
 ```graphql
 query {
-  findInCatalog(
-    query: "red shoes",
-    type: Text,
-    searchOptions: {
-      query_by: ["Name", "Description"],
-      limit: 10,
-      offset: 0
+  getProductPreview(
+    source: {
+      sourceRequest: {
+        name: "My Custom Feed",
+        type: Request,
+        url: "https://mycustomfeed.com/products"
+      }
     }
   )
 }
