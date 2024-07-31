@@ -1,8 +1,6 @@
-Thank you for providing the correct structure for the targetFormat. I'll update the documentation with this information and reprint the updated version.
-
 --- title: 'Product Extraction' ---
 
-This API allows you to extract product information in a structured way from various sources. It provides flexible querying options to fetch single or multiple products and preview data from sources.
+This API allows you to extract product information in a structured way from your catalog and the web.
 
 ## Key Queries
 
