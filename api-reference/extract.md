@@ -6,7 +6,7 @@ This API allows you to extract product information in a structured way from your
 
 ### getProduct
 
-Fetch a single product based on a specified query and type.
+Fetch a single product based on a specified query and type from the web.
 
 ```graphql
 getProduct(query: String!, type: QueryType!, targetFormat: TargetFormatInput): JSON
@@ -46,14 +46,14 @@ query {
 }
 ```
 
-This query allows you to search for a product using various identifiers. The `targetFormat` parameter lets you define the structure of the returned data, ensuring you get exactly the fields you need in the format you specify.
+This query allows you to search for any product using various identifiers. The `targetFormat` parameter lets you define the structure of the returned data, ensuring you get exactly the fields you need in the format you specify.
 
 ### findInCatalog
 
 Search for products in the catalog based on a specified query and type.
 
 ```graphql
-findInCatalog(query: String!, type: QueryType!): [JSON!]
+findInCatalog(query: String!, type: QueryType!, ): [JSON!]
 ```
 
 Parameters:
@@ -140,13 +140,10 @@ query {
     source: {
       sourceRequest: {
         name: "My Custom Feed",
-        type: Feed,
+        type: Request,
         url: "https://mycustomfeed.com/products"
       }
     }
   )
 }
 ```
-
-This query is useful for inspecting the raw data from a source before applying any mappings or transformations. It helps in understanding the structure of the source data, which can be valuable when setting up mappings or defining target formats.
-
