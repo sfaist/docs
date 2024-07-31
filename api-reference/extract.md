@@ -51,6 +51,31 @@ query {
 
 This query allows you to search for any product using various identifiers. The `targetFormat` parameter lets you define the structure of the returned data, ensuring you get exactly the fields you need in the format you specify.
 
+### findInCatalog
+
+Search your catalog for products matching the given query. Returns an array of JSON objects representing the found products.
+
+```graphql
+findInCatalog(query: String!, type: QueryType!, searchOptions: JSON): [JSON!]
+```
+
+
+#### Example:
+
+```graphql
+query {
+  findInCatalog(
+    query: "red shoes",
+    type: Text,
+    searchOptions: {
+      query_by: ["Name", "Description"],
+      limit: 10,
+      offset: 0
+    }
+  )
+}
+```
+
 
 ### getFromSource
 
