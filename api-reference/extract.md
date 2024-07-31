@@ -1,4 +1,6 @@
---- title: 'Product Extraction' ---
+--- 
+title: 'Product Fetching'
+---
 
 This API allows you to extract product information in a structured way from your catalog and the web.
 
@@ -13,7 +15,7 @@ getProduct(query: String!, type: QueryType!, targetFormat: TargetFormatInput): J
 ```
 
 Parameters:
-- `query`: The search term or identifier for the product.
+- `query`: The search term or identifier for the product. 
 - `type`: The type of query (Link, Text, GTIN, or ImageLink).
 - `targetFormat`: Specifies the structure of the returned data, either as ID or object array, see [`TargetFormatInput`](./types#targetformatinput). If not specified, the default target format will be used.
 
@@ -50,15 +52,18 @@ This query allows you to search for any product using various identifiers. The `
 
 ### findInCatalog
 
-Search for products in the catalog based on a specified query and type.
+Search your catalog for products matching the given query. Returns an array of JSON objects representing the found products.
 
 ```graphql
-findInCatalog(query: String!, type: QueryType!, ): [JSON!]
+findInCatalog(query: String!, type: QueryType!, searchOptions: JSON): [JSON!]
 ```
 
 Parameters:
-- `query`: The search term or identifier for the products.
+- `query`: The search term or identifier for the products. Use "\*" as the search string to return all documents. This is typically useful when used in conjunction with searchOptions like filter_by.
 - `type`: The type of query (Link, Text, GTIN, or ImageLink).
+- `searchOptions`: An object containing additional search options, see [`search`](./search).
+
+For example, to return all documents that match a filter, use: query: "*" with searchOptions: {filter_by: "Brand:Zara"}. To exclude words in your query explicitly, prefix the word with the - operator, e.g. q: 'electric car -tesla'.
 
 #### Example:
 ```graphql
@@ -66,11 +71,14 @@ query {
   findInCatalog(
     query: "red shoes",
     type: Text
+    searchOptions: {
+      query_by: ["Name", "Description"],
+      limit: 10,
+      offset: 0
+    }
   )
 }
 ```
-
-This query searches the catalog for products matching the given query and returns an array of JSON objects representing the found products.
 
 ### getFromSource
 
@@ -117,8 +125,6 @@ query {
   )
 }
 ```
-
-This query is powerful for bulk extraction of product data. You can specify various source types and define exactly how you want the product data structured in the response. This makes it easy to integrate with different e-commerce platforms or data sources.
 
 ### getProductPreview
 
