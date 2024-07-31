@@ -1,5 +1,5 @@
 ---
-title: 'Webhook Management and Execution'
+title: 'Webhooks'
 ---
 
 Webhooks are executed whenever specific events occur in the product data associated with a job run. Webhooks can be configured to monitor specific fields or events such as product additions, updates, or removals.
