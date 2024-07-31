@@ -6,7 +6,7 @@ This section of the API focuses on managing and executing jobs. Jobs are a way t
 
 ## Job Schema
 
-The `JobSchema` type includes the following fields:
+The [`JobSchema`](./types#jobschema) type includes the following fields:
 
 - `id`: Unique identifier for the job
 - `status`: Current status of the job
