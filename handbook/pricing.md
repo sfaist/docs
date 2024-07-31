@@ -4,7 +4,7 @@ sidebar: Handbook
 showTitle: true
 ---
 
-Our pricing is simple and transparent, based on the number of SKUs in your catalog on average each month. We do not charge for queries or affiliate purchases and offer a generous free tier to help you get started.
+Our pricing is simple and transparent, based on the number of SKUs processed each month. Processed means that an SKU is fetched from a source and transformed. We do not charge for queries on your catalog or affiliate purchases and offer a generous free tier to help you get started. 
 
 ## Why do we price based on usage?
 
@@ -12,40 +12,34 @@ Really it comes down to this: The more you use index, the more value you get, an
 
 ## Free Tier
 
-* First 2,000 SKUs per month: free
-* Includes both feed and other sources
+* First 50,000 processed SKUs from Product Feeds \& Files per month: free
+* First 50,000 processed SKUs from Shopify, Index, Requests, APIs: free
+* First 100 processed SKUs from Websites: free
 
 ## SKU Processing Rates (After Free Tier)
 
-| Source | Price per 1,000 SKUs per month |
+| Source | Price per 100,000 processed SKUs |
 |--------|----------------------|
-| Product Feeds \& Files  | $0.30        |
-| Other (Shopify, APIs, etc.)    | $0.60              |
-
-## How It Works
-
-1. Your first 2,000 SKUs each month are always free.
-2. We count the number of unique SKUs in your catalog beyond the free tier.
-3. SKUs are categorized by source (feeds or other).
-4. Your monthly bill is calculated based on the volume in each category, after the free tier.
+| Product Feeds \& Files  | $1.00        |
+| Shopify, Index, Requests, APIs    | $2.00              |
+| Websites    | $200.00              |
 
 ## How to estimate your usage
 
-Let's say you have a catalog with 150,000 SKUs.
-* 100,000 SKUs from feeds
-* 50,000 SKUs from other sources
+Let's say you have a catalog with 150,000 SKUs, processed every day for 30 days.
+* 100,000 SKUs from feeds (processed once every day for 30 days)
+* 50,000 SKUs from other sources (processed once every day for 30 days)
 
 Your bill would be:
-* Free tier: First 2,000 SKUs
-* Feeds: (99,000 / 1,000) * \$0.30 \= \$29.70
-* Other: (49,000 / 1,000) * \$0.60 \= \$29.40 
-* Total: \$59.10
+* Feeds: (100,000 * 30 - 50,000) / 100,000 * \$1,00 \= \$29.50
+* Shopify: (50,000 * 30 - 50,000) / 100,000 * \$1,00 \= \$14.50 
+* Total: \$44.00
 
 For reference, most major retailers have a catalog with 1,000 to 10,000 SKUs.
 
 ## Enterprise
 
-We offer yearly plans and support agreements for enterprise customers. You can find more details on the [Contracts](./contracts) page.
+We offer yearly plans with committed use discounts and support agreements for enterprise customers. You can find more details on the [Contracts](./contracts) page.
 
 ## Benefits
 
