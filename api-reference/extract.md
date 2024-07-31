@@ -60,7 +60,7 @@ findInCatalog(query: String!, type: QueryType!, searchOptions: JSON): [JSON!]
 ```
 
 Parameters:
-- `query`: The search term or identifier for the products. Use \"\*\" as the search string to return all documents. This is typically useful when used in conjunction with searchOptions like filter_by.
+- `query`: The search term or identifier for the products. Use `"*"` as the search string to return all documents. This is typically useful when used in conjunction with searchOptions like filter_by.
 - `type`: The type of query (Link, Text, GTIN, or ImageLink).
 - `searchOptions`: An object containing additional search options, see [`search`](./search).
 
