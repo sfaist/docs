@@ -64,7 +64,7 @@ Parameters:
 - `type`: The type of query (Link, Text, GTIN, or ImageLink).
 - `searchOptions`: An object containing additional search options, see [`search`](./search).
 
-For example, to return all documents that match a filter, use: query: `&ast;` with searchOptions: {filter_by: "Brand:Zara"}. To exclude words in your query explicitly, prefix the word with the - operator, e.g. q: 'electric car -tesla'.
+For example, to return all documents that match a filter, use: query: `&ast;` with searchOptions: `{filter_by: "Brand:Zara"}`. To exclude words in your query explicitly, prefix the word with the - operator, e.g. q: 'electric car -tesla'.
 
 
 #### Example:
