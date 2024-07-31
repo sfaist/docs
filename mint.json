@@ -64,7 +64,8 @@
         "api-reference/mappings",
         "api-reference/jobs",
         "api-reference/types",
-        "api-reference/search"
+        "api-reference/search",
+        "api-reference/webhooks"
       ]
     }
   ],

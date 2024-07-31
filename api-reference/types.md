@@ -103,7 +103,7 @@ input MappingInput {
 ```
 
 ### TargetFormatInput
-Defines the target format for data operations. Users can either reference an existing format using an `id` or provide the format as a JSON object.
+Defines the target format for data operations. Users can either reference an existing format using an `id` or provide the format as a JSON object. If neither an `id` nor `data` is provided, the default target format will be used.
 
 ```graphql
 input TargetFormatInput {

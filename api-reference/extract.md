@@ -17,7 +17,7 @@ getProduct(query: String!, type: QueryType!, targetFormat: TargetFormatInput): J
 Parameters:
 - `query`: The search term or identifier for the product.
 - `type`: The type of query (Link, Text, GTIN, or ImageLink).
-- `targetFormat`: Specifies the structure of the returned data, either as ID or object array, see [TargetFormatInput](./types#targetformatinput). If not specified, the default target format will be used.
+- `targetFormat`: Specifies the structure of the returned data, either as ID or object array, see [`TargetFormatInput`](./types#targetformatinput). If not specified, the default target format will be used.
 
 #### Example:
 ```graphql
@@ -83,10 +83,8 @@ getFromSource(source: SourceInput!, targetFormat: TargetFormatInput): [JSON!]
 ```
 
 Parameters:
-- `source`: Defines the data source to fetch products from.
-- `targetFormat`: Specifies the structure of the returned data, either as ID or object array, see [TargetFormatInput](./types#targetformatinput). If not specified, the default target format will be used.
-
-For details on input types, see [SourceInput](./types#sourceinput) and [TargetFormatInput](./types#targetformatinput).
+- `source`: Defines the data source to fetch products from, see [`SourceInput`](./types#sourceinput).
+- `targetFormat`: Specifies the structure of the returned data, either as ID or object array, see [`TargetFormatInput`](./types#targetformatinput). If not specified, the default target format will be used.
 
 #### Example:
 ```graphql
@@ -135,7 +133,7 @@ getProductPreview(source: SourceInput!): [JSON!]
 Parameters:
 - `source`: Defines the data source to fetch the product preview from.
 
-For details on the input type, see [SourceInput](./types#sourceinput).
+For details on the input type, see [`SourceInput`](./types#sourceinput).
 
 Example:
 ```graphql

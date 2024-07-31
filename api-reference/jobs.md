@@ -14,9 +14,9 @@ The [`JobSchema`](./types#jobschema) type includes the following fields:
 - `mappingID`: ID of the associated mapping
 - `targetSchemaID`: ID of the associated target format
 - `lastRun`: Timestamp of the last execution
-- `source`: Associated `SourceSchema` object, this triggers an additional query to fetch the source data
-- `mapping`: Associated `MappingSchema` object, this triggers an additional query to fetch the mapping data
-- `targetFormat`: Associated `TargetFormatSchema` object, this triggers an additional query to fetch the target format data
+- `source`: Associated [`SourceSchema`](./types#sourceschema) object, this triggers an additional query
+- `mapping`: Associated [`MappingSchema`](./types#mappingschema) object, this triggers an additional query to fetch
+- `targetFormat`: Associated [`TargetFormatSchema`](./types#targetformatschema) object, this triggers an additional query to fetch
 
 ## Queries
 
@@ -51,7 +51,7 @@ query {
 }
 ```
 
-This query returns an array of all saved jobs, including details about their associated [source](./types#sourceinput), [mapping](./types#mappinginput), and [target format](./types#targetformatinput).
+This query returns an array of all saved jobs, including details about their associated [`source`](./types#sourceinput), [`mapping`](./types#mappinginput), and [`target format`](./types#targetformatinput).
 
 ## Mutations
 
@@ -85,11 +85,13 @@ mutation {
 ```
 
 This mutation creates a new job by combining existing or new components:
-- `source`: The source to use (can be an existing source ID or a new source request). This is a required field.
-- `mapping`: The mapping to apply. If no mapping is provided, a mapping will be generated based on the source data.
-- `targetFormat`: The target format to transform the data into. If no target format is given, the default target format will be used.
+- [`source`](./types#sourceinput): The source to use (can be an existing source ID or a new source request).
+- [`mapping`](./types#mappinginput): The mapping to apply. If no mapping is given, a mapping will be generated based on the source data.
+- [`targetFormat`](./types#targetformatinput): The target format to transform the data into. If no target format is given, the default target format will be used.
 
-It returns the ID of the newly created job.
+After initialization, the job will be run once. After that, it will be automatically run every 24 hours. You can manually trigger a job execution using the [`runJob`](#runjob) mutation.
+
+The mutation returns the ID of the newly created job.
 
 ### deleteJob
 Deletes a saved job.

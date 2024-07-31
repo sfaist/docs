@@ -13,7 +13,7 @@ validateProducts(data: [JSON!]!, targetFormat: TargetFormatInput): [ValidationRe
 ### Parameters
 
 - `data`: An array of JSON objects representing the products to be validated.
-- `targetFormat`: Specifies the structure to validate against, either as ID or object array, see [TargetFormatInput](./types#targetformatinput). If not specified, the default target format will be used.
+- `targetFormat`: Specifies the structure to validate against, either as ID or object array, see [`TargetFormatInput`](./types#targetformatinput). If not specified, the default target format will be used.
 
 ### Return Value
 
