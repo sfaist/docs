@@ -19,7 +19,7 @@ applyMapping(
 
 If no target format is provided, the default target format will be used.
 
-Example:
+#### Example:
 ```graphql
 query {
   applyMapping(
@@ -158,7 +158,7 @@ Use transformation functions to modify data as part of the mapping process. Thes
 | `replace(search, replacement)` | Replaces all occurrences of a substring.    | `replace("old", "new")` applied to `"old product" -> "new product"` |
 | `join(separator)`| Joins array elements into a string.                       | `join(", ")` applied to `["red", "green", "blue"] -> "red, green, blue"` |
 
-Example usage of transformation functions in a mapping:
+#### Example usage of transformation functions in a mapping:
 
 ```graphql
 {

@@ -19,7 +19,7 @@ Parameters:
 - `type`: The type of query (Link, Text, GTIN, or ImageLink).
 - `targetFormat`: Specifies the structure of the returned data, either as ID or object array, see [TargetFormatInput](./types#targetformatinput). If not specified, the default target format will be used.
 
-Example:
+#### Example:
 ```graphql
 query {
   getProduct(
@@ -62,7 +62,7 @@ Parameters:
 - `query`: The search term or identifier for the products.
 - `type`: The type of query (Link, Text, GTIN, or ImageLink).
 
-Example:
+#### Example:
 ```graphql
 query {
   findInCatalog(
@@ -88,7 +88,7 @@ Parameters:
 
 For details on input types, see [SourceInput](./types#sourceinput) and [TargetFormatInput](./types#targetformatinput).
 
-Example:
+#### Example:
 ```graphql
 query {
   getFromSource(

@@ -27,7 +27,7 @@ Retrieves all saved jobs.
 getJobs: [JobSchema!]
 ```
 
-Example:
+#### Example:
 ```graphql
 query {
   getJobs {
@@ -62,7 +62,7 @@ Saves a new job, associating a source, mapping, and target format.
 saveJob(source: SourceInput!, mapping: MappingInput, targetFormat: TargetFormatInput): ID
 ```
 
-Example:
+#### Example:
 ```graphql
 mutation {
   saveJob(
@@ -98,7 +98,7 @@ Deletes a saved job.
 deleteJob(id: ID!): Boolean!
 ```
 
-Example:
+#### Example:
 ```graphql
 mutation {
   deleteJob(id: "587")
@@ -114,7 +114,7 @@ Executes a saved job.
 runJob(id: ID!): Boolean!
 ```
 
-Example:
+#### Example:
 ```graphql
 mutation {
   runJob(id: "job123")
