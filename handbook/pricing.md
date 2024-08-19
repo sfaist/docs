@@ -4,38 +4,63 @@ sidebar: Handbook
 showTitle: true
 ---
 
-Our pricing is simple and transparent, based on the number of SKUs processed each month. Processed means that an SKU is fetched from a source and transformed. We do not charge for queries on your catalog or affiliate purchases and offer a generous free tier to help you get started. 
+Our pricing is simple and transparent, based on the volume of data processed each month. Processing means that data is fetched from a source, transformed, and stored. We do not charge for queries on your catalog or affiliate purchases, and we offer a generous free tier to help you get started.
 
 ## Why do we price based on usage?
 
-Really it comes down to this: The more you use index, the more value you get, and the more it costs us to process and store your data. Thus, we charge based on usage.
+Really it comes down to this: The more you use the platform, the more value you get, and the more it costs us to process and store your data. Thus, we charge based on usage.
 
 ## Free Tier
 
-* First 50,000 processed SKUs from Product Feeds \& Files per month: free
-* First 50,000 processed SKUs from Shopify, Index, Requests, APIs: free
-* First 100 processed SKUs from Websites: free
+* First 1 million records processed per month: free
 
-## SKU Processing Rates (After Free Tier)
+## Processing Rates (After Free Tier)
 
-| Source | Price per 100,000 processed SKUs |
-|--------|----------------------|
-| Product Feeds \& Files  | $1.00        |
-| Shopify, Index, Requests, APIs    | $2.00              |
-| Websites    | $200.00              |
+| Tier | Monthly Processed Volume (M) | Price per Million Records |
+|------|------------------------------|---------------------------|
+| Free | 0 - 1 M                       | $0                        |
+| S    | 1 - 50 M                      | $10                       |
+| M    | 50 - 500 M                    | $5                        |
+| L    | 500 - 5000 M                  | $3                        |
+| XL   | Above 5000 M                  | Contact us                |
 
 ## How to estimate your usage
 
-Let's say you have a catalog with 150,000 SKUs, processed every day for 30 days.
-* 100,000 SKUs from feeds (processed once every day for 30 days)
-* 50,000 SKUs from other sources (processed once every day for 30 days)
+Let's say you have a catalog with 10 Feeds and 10,000 products with 5 variants each, processed every day.
+For reference, most retailers have a catalog with 5,000 to 20,000 SKUs and 1-5 variants per product.
 
-Your bill would be:
-* Feeds: (100,000 * 30 - 50,000) / 100,000 * \$1,00 \= \$29.50
-* Shopify: (50,000 * 30 - 50,000) / 100,000 * \$1,00 \= \$14.50 
-* Total: \$44.00
+### Scenario 1: Starting out
+* **Feeds**: 10
+* **Products per feed**: 10,000
+* **Variants**: 3
+* **Runs per month**: 30
+* **Processed per month**: 9 M
 
-For reference, most major retailers have a catalog with 1,000 to 10,000 SKUs.
+**Monthly Cost: $80.00**
+
+With Yearly Discount: $60.00
+
+### Scenario 2: Large catalog
+* **Feeds**: 100
+* **Products per feed**: 30,000
+* **Variants**: 5
+* **Runs per month**: 30
+* **Processed per month**: 450 M
+
+**Monthly Cost: $2,500**
+
+With Yearly Discount: $1,875.00
+
+### Scenario 3: Very large catalog
+* **Feeds**: 500
+* **Products per feed**: 50,000
+* **Variants**: 5
+* **Runs per month**: 30
+* **Processed per month**: 3,750 M
+
+**Cost: $12,750.00**
+
+With Yearly Discount: $9,562.50
 
 ## Enterprise
 
@@ -52,4 +77,4 @@ We offer yearly plans with committed use discounts and support agreements for en
 
 ## Managing billing
 
-All index instances talk to a common external **Billing Service**. The Billing Service is the source of truth for product information, what plans are offered on those products, and feature entitlements on those plans. Our payment provider Stripe is the source of truth for customer information, invoices, and payments. The billing service communicates with Stripe to pull all the relevant information together before responding to customer requests.
+All instances communicate with a central **Billing Service**. The Billing Service manages product information, plans, and feature entitlements. Our payment provider Stripe handles customer information, invoices, and payments. The billing service synchronizes with Stripe to ensure all information is accurate before responding to customer requests.

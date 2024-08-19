@@ -7,7 +7,13 @@ title: 'Getting Started'
   ) if you want to get early access.
 </Note>
 
-Once you've signed up, you can start extracting and transforming your data. You can also use our [dashboard](https://dashboard.index-commerce.com) to manage your sources and data.
+index has a powerful API that enables you to build a product catalog with any product on the internet. Once you've signed up, you can start extracting and transforming your products. You can also use our [dashboard](https://dashboard.index-commerce.com) to manage your sources and data.
+
+The API is designed as a private API that you call through your servers.
+We do not provide a public API for clients to query directly at this time.
+
+We provide a GraphQL endpoint that can be called with Postman, curl, and common GraphQL APIs. 
+**Requests are handled via https://graphql.index-commerce.com.**
 
 <CardGroup cols={2}>
 <Card
