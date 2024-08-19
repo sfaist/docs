@@ -55,7 +55,7 @@ For reference, most retailers have a catalog with 5,000 to 20,000 SKUs and 1-5 v
     * Processed per month: 3,750 M
 
 
-    **Cost: $12,750**
+    **Monthly Cost: $12,750**
   </Card>
 </CardGroup>
 
