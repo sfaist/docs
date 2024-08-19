@@ -25,7 +25,8 @@ Really it comes down to this: The more you use the platform, the more value you 
 Let's say you have a catalog with 10 Feeds and 10,000 products with 5 variants each, processed every day.
 For reference, most retailers have a catalog with 5,000 to 20,000 SKUs and 1-5 variants per product.
 
-<CardGroup cols={3}>
+### Pricing Examples
+<CardGroup cols={2}>
   <Card title="Starting out" icon="square-1">
     * Feeds: 10
     * Products per feed: 10,000
