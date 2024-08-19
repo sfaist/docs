@@ -10,10 +10,6 @@ Our pricing is simple and transparent, based on the volume of data processed eac
 
 Really it comes down to this: The more you use the platform, the more value you get, and the more it costs us to process and store your data. Thus, we charge based on usage.
 
-## Free Tier
-
-* First 1 million records processed per month: free
-
 ## Processing Rates (After Free Tier)
 
 | Tier | Monthly Processed Volume (M) | Price per Million Records |
@@ -38,8 +34,6 @@ For reference, most retailers have a catalog with 5,000 to 20,000 SKUs and 1-5 v
 
 **Monthly Cost: $80.00**
 
-With Yearly Discount: $60.00
-
 ### Scenario 2: Large catalog
 * **Feeds**: 100
 * **Products per feed**: 30,000
@@ -49,8 +43,6 @@ With Yearly Discount: $60.00
 
 **Monthly Cost: $2,500**
 
-With Yearly Discount: $1,875.00
-
 ### Scenario 3: Very large catalog
 * **Feeds**: 500
 * **Products per feed**: 50,000
@@ -59,8 +51,6 @@ With Yearly Discount: $1,875.00
 * **Processed per month**: 3,750 M
 
 **Cost: $12,750.00**
-
-With Yearly Discount: $9,562.50
 
 ## Enterprise
 
