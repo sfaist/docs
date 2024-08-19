@@ -33,6 +33,7 @@ For reference, most retailers have a catalog with 5,000 to 20,000 SKUs and 1-5 v
     * Runs per month: 30
     * Processed per month: 9 M
 
+
     **Monthly Cost: $80.00**
   </Card>
   <Card title="Large catalog" icon="square-2">
@@ -42,6 +43,7 @@ For reference, most retailers have a catalog with 5,000 to 20,000 SKUs and 1-5 v
     * Runs per month: 30
     * Processed per month: 450 M
 
+
     **Monthly Cost: $2,500**
   </Card>
   <Card title="Very large catalog" icon="square-3">
@@ -50,6 +52,7 @@ For reference, most retailers have a catalog with 5,000 to 20,000 SKUs and 1-5 v
     * Variants: 5
     * Runs per month: 30
     * Processed per month: 3,750 M
+
 
     **Cost: $12,750.00**
   </Card>
