@@ -35,7 +35,7 @@ For reference, most retailers have a catalog with 5,000 to 20,000 SKUs and 1-5 v
     * Processed per month: 9 M
 
 
-    **Monthly Cost: $80.00**
+    **Monthly Cost: $80**
   </Card>
   <Card title="Large catalog" icon="square-2">
     * Feeds: 100
@@ -55,7 +55,7 @@ For reference, most retailers have a catalog with 5,000 to 20,000 SKUs and 1-5 v
     * Processed per month: 3,750 M
 
 
-    **Cost: $12,750.00**
+    **Cost: $12,750**
   </Card>
 </CardGroup>
 
