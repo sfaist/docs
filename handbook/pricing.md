@@ -25,32 +25,35 @@ Really it comes down to this: The more you use the platform, the more value you 
 Let's say you have a catalog with 10 Feeds and 10,000 products with 5 variants each, processed every day.
 For reference, most retailers have a catalog with 5,000 to 20,000 SKUs and 1-5 variants per product.
 
-### Scenario 1: Starting out
-* **Feeds**: 10
-* **Products per feed**: 10,000
-* **Variants**: 3
-* **Runs per month**: 30
-* **Processed per month**: 9 M
+<CardGroup cols={2}>
+  <Card title="Starting out" icon="square-1">
+    * **Feeds**: 10
+    * **Products per feed**: 10,000
+    * **Variants**: 3
+    * **Runs per month**: 30
+    * **Processed per month**: 9 M
 
-**Monthly Cost: $80.00**
+    **Monthly Cost: $80.00**
+  </Card>
+  <Card title="Large catalog" icon="square-2">
+    * **Feeds**: 100
+    * **Products per feed**: 30,000
+    * **Variants**: 5
+    * **Runs per month**: 30
+    * **Processed per month**: 450 M
 
-### Scenario 2: Large catalog
-* **Feeds**: 100
-* **Products per feed**: 30,000
-* **Variants**: 5
-* **Runs per month**: 30
-* **Processed per month**: 450 M
+    **Monthly Cost: $2,500**
+  </Card>
+  <Card title="Very large catalog" icon="square-3">
+    * **Feeds**: 500
+    * **Products per feed**: 50,000
+    * **Variants**: 5
+    * **Runs per month**: 30
+    * **Processed per month**: 3,750 M
 
-**Monthly Cost: $2,500**
-
-### Scenario 3: Very large catalog
-* **Feeds**: 500
-* **Products per feed**: 50,000
-* **Variants**: 5
-* **Runs per month**: 30
-* **Processed per month**: 3,750 M
-
-**Cost: $12,750.00**
+    **Cost: $12,750.00**
+  </Card>
+</CardGroup>
 
 ## Enterprise
 
