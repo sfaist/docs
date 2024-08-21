@@ -17,6 +17,7 @@ The [`JobSchema`](./types#jobschema) type includes the following fields:
 - `source`: Associated [`SourceSchema`](./types#sourceschema) object, this triggers an additional query
 - `mapping`: Associated [`MappingSchema`](./types#mappingschema) object, this triggers an additional query to fetch
 - `targetFormat`: Associated [`TargetFormatSchema`](./types#targetformatschema) object, this triggers an additional query to fetch
+- `webhooks`: All associated [`WebhookSchema`](./types#webhookschema) objects, this triggers an additional query to fetch
 
 ## Queries
 

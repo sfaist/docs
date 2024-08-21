@@ -20,16 +20,45 @@ For example, to return all documents that match a filter, use: `query: "*"` with
 ### Example:
 
 ```graphql
-query {
-  findInCatalog(
-    query: "red shoes",
-    type: Text,
-    searchOptions: {
-      query_by: ["Name", "Description"],
-      limit: 10,
-      offset: 0
+query FindInCatalog($query: String!, $type: QueryType!, $searchOptions: JSON) {
+  findInCatalog(query: $query, type: $type, searchOptions: $searchOptions) {
+    products
+  }
+}
+
+variables {
+  "query": "Sneakers",
+  "type": "Text",
+  "searchOptions": { "filter_by": "variants: Black" }
+}
+```
+
+Responds with the products that match the query:
+```json
+{
+  "data": {
+    "findInCatalog": {
+      "products": [
+        {
+          "available": true,
+          "brand": "Veja",
+          "currency": "USD",
+          "id": "6a1586fad23d9a593c748f719557acd1",
+          "image_src": [
+            "https://shop.goop-img.com/spree/images/attachments/000/108/775/xlarge/open-uri20240624-215488-1vedl1e?1719255129",
+            "https://shop.goop-img.com/spree/images/attachments/000/108/776/xlarge/open-uri20240624-215488-1w0ufqq?1719255133"
+          ],
+          "link": "https://goop.com/veja-recife-logo-sneakers-black-white/p/?variant_id=135346",
+          "name": "Veja Recife Logo Sneakers in Black White",
+          "price": 185,
+          "product_category": "Clothing",
+          "variants": [
+            "Black White"
+          ]
+        }
+      ]
     }
-  )
+  }
 }
 ```
 

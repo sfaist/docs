@@ -22,32 +22,35 @@ Parameters:
 #### Example:
 
 ```graphql
-query {
-  getProduct(
-    query: "B08F7N4LF8",
-    type: GTIN,
-    targetFormat: {
-      id: "4545", # use an ID from the saved target format
-      data: {     # alternatively, submit the target format as a JSON object
-        "Name": {
-          "type": "string",
-          "description": "Product name",
-          "attributes": ["required", "capitalized"]
-        },
-        "Price": {
-          "type": "number",
-          "description": "Product price",
-          "attributes": ["required", "positiveNumber", "currency"]
-        },
-        "Description": {
-          "type": "string",
-          "description": "Product description"
-        }
-      }
-    }
-  )
+query Query($query: String!, $type: QueryType!, $targetFormat: TargetFormatInput) {
+  getProduct(query: $query, type: $type, targetFormat: $targetFormat)
 }
 ```
+
+```json
+variables: {
+  "query": "https://www.amazon.com/Creuset-Signature-Enameled-Cast-Iron-Stainless/dp/B00VA5HG0Q",
+  "type": "Link",
+  "targetFormat": {
+    // define the structure of the returned data
+    "data": {  
+      "name": {
+        "type": "string",
+      },
+      "brand": {
+        "type": "string",
+      },
+      "price": {
+        "type": "number",
+      },
+    },
+    // alternatively use a saved format
+    "id": "12"
+    // if no target format is specified, your default format will be used.
+  }
+}
+```
+
 
 This query allows you to search for any product using various identifiers. The `targetFormat` parameter lets you define the structure of the returned data, ensuring you get exactly the fields you need in the format you specify.
 
