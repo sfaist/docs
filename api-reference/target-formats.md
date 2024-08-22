@@ -14,7 +14,7 @@ Certainly! I'll update the table with the information you provided. Here's the r
 |------|------|------------|-------------|
 | `TargetFormatSchema` | Interface | `id`: string<br>`targetFormat`: TargetFormat<br>`name?`: string<br>`jobs?`: JobSchema[]<br>`default?`: boolean | Defines the overall structure of a target format |
 | `TargetFormat` | Interface | `[key: string]`: TargetFormatField | Defines the structure of the target format, with keys as field names and values as TargetFormatField objects |
-| `TargetFormatField` | Interface | `type`: 'string' \| 'number' \| 'boolean' \| 'object'<br>`description?`: string<br>`choices?`: string[]<br>`attributes?`: TargetFieldAttribute[]<br>`fields?`: TargetFormat | Defines the structure of a field in the target format |
+| `TargetFormatField` | Interface | `type`: 'string' \| 'number' \| 'boolean' \| 'array'<br>`description?`: string<br>`choices?`: string[]<br>`attributes?`: TargetFieldAttribute[]<br>`fields?`: TargetFormat | Defines the structure of a field in the target format |
 | `TargetFieldAttribute` | Enum | `required`<br>`capitalized`<br>`wholeNumber`<br>`positiveNumber`<br>`decimalNumber`<br>`email`<br>`url`<br>`phoneNumber`<br>`date`<br>`time`<br>`datetime`<br>`currency`<br>`percentage` | Enum of possible attributes for a target field |
 
 ## Target Format Operations
