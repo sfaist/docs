@@ -7,7 +7,14 @@ title: 'Search'
 Search your catalog for products matching the given query. Returns an array of JSON objects representing the found products.
 
 ```graphql
-findInCatalog(query: String!, type: QueryType!, searchOptions: JSON): [JSON!]
+findInCatalog(query: String!, type: QueryType!, searchOptions: JSON): SearchResult
+
+type SearchResult {
+  products: [JSON!]
+  found: Int!
+  out_of: Int!
+  page: Int!
+}
 ```
 
 Parameters:
@@ -16,6 +23,12 @@ Parameters:
 - `searchOptions`: An object containing additional search options, see [`Search`](./search).
 
 For example, to return all documents that match a filter, use: `query: "*"` with searchOptions: `{filter_by: "Brand:Zara"}`. To exclude words in your query explicitly, prefix the word with the - operator, e.g. q: 'electric car -tesla'.
+
+Return Type: `SearchResult`
+- `products`: An array of products that match the query.
+- `found`: The total number of products that match the query.
+- `out_of`: The total number of products in the catalog.
+- `page`: The current page of results.
 
 ### Example:
 
@@ -72,13 +85,12 @@ findInCatalog(query: String!, type: QueryType!, searchOptions: JSON): [JSON!]
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
+| mode | no | How the catalog should be queried: keyword or semantic. Use keyword search for queries where it is important that the actual keyword is in the results, e.g. when looking for specific brands. Use semantic search for abstract queries, e.g. 'winter outfit' that is not neccesarily covered by keywords. Default: keyword |
 | query_by | no | One or more field names that should be queried against. Separate multiple fields with a comma: company_name, country. The order of the fields is important: a record that matches on a field earlier in the list is considered more relevant than a record matched on a field later in the list. So, in the example above, documents that match on the company_name field are ranked above documents matched on the country field. Only fields that have a datatype of string or string[] in the collection schema can be specified in query_by. |
 | prefix | no | Indicates that the last word in the query should be treated as a prefix, and not as a whole word. This is necessary for building autocomplete and instant search interfaces. Set this to false to disable prefix searching for all queried fields. You can also control the behavior of prefix search on a per field basis. For example, if you are querying 3 fields and want to enable prefix searching only on the first field, use ?prefix=true,false,false. The order should match the order of fields in query_by. If a single value is specified for prefix the same value is used for all fields specified in query_by. Default: true (prefix searching is enabled for all fields). |
 | infix | no | Infix search can be used to find documents that contains a piece of text that appears in the middle of a word. For example, we can use infix search to locate the string XYZ within the word AK1243XYZ6789. NOTE: Infix search is meant for searching on small fields like email addresses, phone numbers, identifiers etc where infix search is specifically useful. Therefore, infix search only uses the first word in the query for searching. Since infix searching requires an additional data structure, you have to enable it on a per-field basis like this: \{"name": "part_number", "type": "string", "infix": true }. If infix index is enabled for this field, infix searching can be done on a per-field basis by sending a comma separated string parameter called infix to the search query. This parameter can have 3 values: off: infix search is disabled, which is default; always: infix search is performed along with regular search; fallback: infix search is performed if regular search does not produce results. For example, if you are querying two fields via ?query_by=title,part_number, you can enable infix searching only for the part_number field, by sending ?infix=off,always (in the same order of the fields in query_by). There are also 2 parameters that allow you to control the extent of infix searching: max_extra_prefix and max_extra_suffix which specify the maximum number of symbols before or after the query that can be present in the token. For example: query "K2100" has 2 extra symbols in "6PK2100". By default, any number of prefixes/suffixes can be present for a match. |
 | pre_segmented_query | no | Set this parameter to true if you wish to split the search query into space separated words yourself. When set to true, we will only split the search query by space, instead of using the locale-aware, built-in tokenizer. Default: false |
 | preset | no | The name of the Preset to use for this search. Presets allow you to save a set of search parameters and use them at search time, with a single preset parameter. Read more about Presets here. |
-| vector_query | no | Perform a nearest-neighbor vector query. Read more about Vector Search. |
-| voice_query | no | Transcribe the base64-encoded speech recording, and do a search with the transcribed query. Read more about Voice Query. |
 
 #### Filter parameters
 
@@ -128,7 +140,7 @@ findInCatalog(query: String!, type: QueryType!, searchOptions: JSON): [JSON!]
 
 | Parameter | Required | Description |
 |-----------|----------|-------------|
-| group_by | no | You can aggregate search results into groups or buckets by specify one or more group_by fields. Separate multiple fields with a comma. NOTE: To group on a particular field, it must be a faceted field. E.g. group_by=country,company_name |
+| group_by | no | You can aggregate search results into groups or buckets by specify one or more group_by fields. Separate multiple fields with a comma. d. E.g. group_by=product_name,product_brand. NOTE: Grouping adds a __group_name to each product result with the comma-separated group values. |
 | group_limit | no | Maximum number of hits to be returned for every group. If the group_limit is set as K then only the top K hits in each group are returned in the response. Default: 3 |
 | group_missing_values | no | Setting this parameter to true will place all documents that have a null value in the group_by field, into a single group. Setting this parameter to false, will cause each document with a null value in the group_by field to not be grouped with other documents. Default: true |
 
