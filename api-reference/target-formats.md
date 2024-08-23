@@ -2,31 +2,6 @@
 title: 'Target Formats'
 ---
 
-Target Formats define the structure and validation rules for your product data. They ensure consistency and data quality across different sources and can be used for data validation and transformation.
-
-## Target Format Schema
-
-A Target Format is composed of fields, each with its own set of properties:
-
-Certainly! I'll update the table with the information you provided. Here's the revised table for the Target Format Schema:
-
-| Name | Type | Properties | Description |
-|------|------|------------|-------------|
-| `TargetFormatSchema` | Interface | `id`: string<br>`targetFormat`: TargetFormat<br>`name?`: string<br>`jobs?`: JobSchema[]<br>`default?`: boolean | Defines the overall structure of a target format |
-| `TargetFormat` | Interface | `[key: string]`: TargetFormatField | Defines the structure of the target format, with keys as field names and values as TargetFormatField objects |
-| `TargetFormatField` | Interface | `type`: 'string' \| 'number' \| 'boolean' \| 'array'<br>`description?`: string<br>`choices?`: string[]<br>`attributes?`: TargetFieldAttribute[]<br>`fields?`: TargetFormat | Defines the structure of a field in the target format |
-Here's the updated table with the additional attributes you requested:
-| `TargetFieldAttribute` | Enum | `required`<br>`capitalized`<br>`wholeNumber`<br>`positiveNumber`<br>`decimalNumber`<br>`email`<br>`url`<br>`phoneNumber`<br>`date`<br>`time`<br>`datetime`<br>`currency`<br>`percentage`<br>`primary`<br>`productID`<br>`embed` | Enum of possible attributes for a target field |
-
-For each field, you can specify the type of data it will contain, along with any additional attributes or constraints.
-
-| Type | Description | Default Value |
-|------|-------------|---------------|
-| `string` | Represents textual data. Can be any sequence of characters. | `""` (empty string) |
-| `number` | Represents numeric data. Includes integers and floating-point numbers. | `0` |
-| `boolean` | Represents a logical value. Can be either true or false. | `false` |
-| `array` | Represents a list or collection of values. Can contain elements of any type. | `[]` (empty array) |
-
 
 ## Target Format Operations
 
