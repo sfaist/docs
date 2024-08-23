@@ -11,7 +11,7 @@ A Target Format is composed of fields, each with its own set of properties:
 | Name | Type | Properties | Description |
 |------|------|------------|-------------|
 | `TargetFormatField` | Interface | `type`: 'string' \| 'number' \| 'boolean' \| 'array'<br/>`description?`: string<br/>`choices?`: string[]<br/>`attributes?`: TargetFieldAttribute[]<br/>`fields?`: TargetFormat | Defines the structure of a field in the target format |
-| `TargetFieldAttribute` | Enum | `required`<br/>`capitalized`<br/>`wholeNumber`<br/>`positiveNumber`<br/>`decimalNumber`<br/>`email`<br/>`url`<br/>`phoneNumber`<br/>`date`<br/>`time`<br/>`datetime`<br/>`currency`<br/>`percentage`<br/>`primary`<br/>`productID`<br/>`embed` | Enum of possible attributes for a target field |
+| `TargetFieldAttribute` | Enum | `required`<br/>`capitalized`<br/>`wholeNumber`<br/>`positiveNumber`<br/>`decimalNumber`<br/>`email`<br/>`url`<br/>`phoneNumber`<br/>`date`<br/>`time`<br/>`datetime`<br/>`currency`<br/>`percentage`<br/>`primary`<br/>`indexProductID`<br/>`embedText`<br/>`embedImage` | Enum of possible attributes for a target field |
 
 For each field, you can specify the type of data it will contain, along with any additional attributes or constraints.
 
