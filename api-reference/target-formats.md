@@ -7,6 +7,15 @@ Target Formats define the structure and validation rules for your product data. 
 ## Target Format Schema
 
 
+For each field, you can specify the type of data it will contain, along with any additional attributes or constraints.
+
+| Type | Description | Default Value |
+|------|-------------|---------------|
+| `string` | Represents textual data. Can be any sequence of characters. | `""` (empty string) |
+| `number` | Represents numeric data. Includes integers and floating-point numbers. | `0` |
+| `boolean` | Represents a logical value. Can be either true or false. | `false` |
+| `array` | Represents a list or collection of values. Can contain elements of any type. | `[]` (empty array) |
+
 index provides a list of attributes that can be used to further customize the target field and specify formatting and validation rules.
 
 | Attribute | Compatible Types | Transformation Explanation |
