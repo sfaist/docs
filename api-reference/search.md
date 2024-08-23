@@ -14,6 +14,7 @@ type SearchResult {
   found: Int!
   out_of: Int!
   page: Int!
+  mode: String!
 }
 ```
 
@@ -29,6 +30,7 @@ Return Type: `SearchResult`
 - `found`: The total number of products that match the query.
 - `out_of`: The total number of products in the catalog.
 - `page`: The current page of results.
+- `mode`: The mode of the search that was used. Can be keyword or semantic.
 
 ### Example:
 
