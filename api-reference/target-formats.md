@@ -6,10 +6,12 @@ Target Formats define the structure and validation rules for your product data. 
 
 ## Target Format Schema
 
-A Target Format is composed of fields, each with its own set of properties:
+A Target Format is stored as TargetFormatSchema, which is composed of meta-information as well as fields, each with its own set of properties:
 
 | Name | Type | Properties | Description |
 |------|------|------------|-------------|
+| `TargetFormatSchema` | Interface | `id`: string<br/>`targetFormat`: TargetFormat<br/>`name?`: string<br/>`jobs?`: JobSchema[]<br/>`default?`: boolean | How a target format is stored in the database, with associated jobs and meta-information. |
+| `TargetFormat` | Interface | `[key: string]`: TargetFormatField | Defines the structure of the target format, with keys as field names and values as TargetFormatField objects |
 | `TargetFormatField` | Interface | `type`: 'string' \| 'number' \| 'boolean' \| 'array'<br/>`description?`: string<br/>`choices?`: string[]<br/>`attributes?`: TargetFieldAttribute[]<br/>`fields?`: TargetFormat | Defines the structure of a field in the target format |
 | `TargetFieldAttribute` | Enum | `required`<br/>`capitalized`<br/>`wholeNumber`<br/>`positiveNumber`<br/>`decimalNumber`<br/>`email`<br/>`url`<br/>`phoneNumber`<br/>`date`<br/>`time`<br/>`datetime`<br/>`currency`<br/>`percentage`<br/>`primary`<br/>`indexProductID`<br/>`embedText`<br/>`embedImage` | Enum of possible attributes for a target field |
 
